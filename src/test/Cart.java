@@ -10,15 +10,39 @@ package test;
  * @author ADMIN
  */
 public class Cart {
-   
     private GameStore itemInCart[];
-    protected int count=0;
+    private int count;
+    private int quality;
+    private Game game;
+    private double totalprice;
     
+
+    public Cart(int size) {
+        itemInCart = new GameStore[size];
+    }
     
-    public void addGame(GameStore game){
-    this.itemInCart[count++] = game;
+    public boolean addGameTOCart(GameStore game,int quality){
+        if(quality == 0){
+            return false;
+        }
+        itemInCart[count] = game;
+            return true;
+    }
     
-    };
+    public void removeGameFromCart(GameStore game){
+        
+    }
     
+    public void calculatetotalprice(Game game,int quality){
+       this.totalprice = quality*game.getPrice();
+    }
+    
+    public void checkoutGame(){
+        payGame();
+    }
+
+    public double getTotalprice() {
+        return totalprice;
+    }
     
 }
