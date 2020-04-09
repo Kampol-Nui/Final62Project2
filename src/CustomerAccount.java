@@ -28,7 +28,11 @@ public class CustomerAccount extends Account{
     }
 
     public double getMyMoney() {
-        return myMoney;
+        return this.myMoney;
+    }
+    
+    public double TopupMoney(double topupmoney){
+        return this.myMoney = this.myMoney + topupmoney;
     }
     
 //    public double calculateMyTotalMoney(){
