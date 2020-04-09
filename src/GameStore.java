@@ -9,5 +9,20 @@
  * @author MINI
  */
 public class GameStore {
+    private Game itemInStore[];
+    private int gameCount;
+    private GameStatus gamestatus;
+
+    public Game[] getItemInStore() {
+        return itemInStore;
+    }
+    
+    public addGameToStore(Game game);
+    
+    public removeGameFromStore(Game game);
+
+    public GameStatus getGamestatus() {
+        return gamestatus;
+    }
     
 }
