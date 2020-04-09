@@ -16,6 +16,7 @@ public class GameLibrary {
     }
     
     public void setLibrary(Cart cart){
-        this.myGameLibrary = cart;
+        //this.myGameLibrary = cart;
+        this.myGameLibrary = cart.getItemInCart();
     }
 }

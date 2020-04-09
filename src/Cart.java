@@ -53,7 +53,12 @@ public class Cart extends Payment{
     }
 
     private void addToLibrary(Cart cart,GameLibrary library) {
-        library.setLibrary(cart)= this.itemInCart;
+        //library.setLibrary(cart)= this.itemInCart[i];
+        
+    }
+
+    GameStore[] getItemInCart() {
+        return this.itemInCart;
     }
     
 }
