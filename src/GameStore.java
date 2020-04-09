@@ -8,7 +8,7 @@
  *
  * @author MINI
  */
-public class GameStore {
+public class GameStore extends Game{
     private Game itemInStore[];
     private int gameCount;
     private GameStatus gamestatus;
@@ -20,9 +20,5 @@ public class GameStore {
     public addGameToStore(Game game);
     
     public removeGameFromStore(Game game);
-
-    public GameStatus getGamestatus() {
-        return gamestatus;
-    }
     
 }

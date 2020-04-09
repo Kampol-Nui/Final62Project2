@@ -9,38 +9,42 @@
  * @author MINI
  */
 public class Cart {
+
     private GameStore itemInCart[];
     private int count;
     private int qunatiity;
     private Game game;
     private double totalprice;
     
-
     public Cart(int size) {
         itemInCart = new GameStore[size];
     }
     
-    public boolean addGameTOCart(GameStore game){
+    public boolean addGameTOCart(GameStore game) {
         itemInCart[count++] = game;
-            return true;
+        return true;
     }
     
-    public void removeGameFromCart(GameStore game){
+    public void removeGameFromCart(GameStore game) {
         for (int i = 0; i < this.count; i++) {
-            if(game)
-            itemInCart[i] = null;         
+            if (game.equals(itemInCart[i])) {
+                itemInCart[i] = null;
+            }            
         }
         
     }
     
-    public void calculatetotalprice(Game game){
-       this.totalprice = game.getPrice();
+    public void calculatetotalprice() {
+        for (int i = 0; i < count; i++) {
+            totalprice = itemInCart[i].getPrice();
+        }
+        ;
     }
     
-    public void checkoutGame(){
+    public void checkoutGame() {
         payGame();
     }
-
+    
     public double getTotalprice() {
         return totalprice;
     }
