@@ -8,7 +8,7 @@
  *
  * @author MINI
  */
-public class GameStore {
+public class GameStore extends Game{
     private Game itemInStore[];
     private int gameCount;
     private GameStatus gamestatus;

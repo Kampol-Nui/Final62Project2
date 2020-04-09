@@ -27,14 +27,19 @@ public class Cart {
     
     public void removeGameFromCart(GameStore game){
         for (int i = 0; i < this.count; i++) {
-            if(game)
-            itemInCart[i] = null;         
-        }
-        
+            if(game.equals(itemInCart[i])){
+            itemInCart[i] = null;
+            this.count--;
+            }
+        }     
     }
     
-    public void calculatetotalprice(Game game){
+    public void calculateTotalPrice(){
        this.totalprice = game.getPrice();
+        for (int i = 0; i < this.count; i++) {
+            this.totalprice = this.itemInCart[i].getPrice();
+            
+        }
     }
     
     public void checkoutGame(){
