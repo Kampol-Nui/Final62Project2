@@ -44,17 +44,17 @@ public class Cart extends Payment{
 
     
     
-    public void checkoutGame(double customermoney,Cart cart) {
+    public void checkoutGame(double customermoney,Cart cart,GameLibrary library) {
         super.payGame(customermoney,cart);
-        addToLibrary();
+        addToLibrary(cart,library);
     }
     
     public double getTotalprice() {
         return this.totalprice;
     }
 
-    private void addToLibrary() {
-        
+    private void addToLibrary(Cart cart,GameLibrary library) {
+        library.setLibrary(cart)= this.itemInCart;
     }
     
 }
