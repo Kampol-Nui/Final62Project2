@@ -8,7 +8,7 @@
  *
  * @author MINI
  */
-public class Cart {
+public class Cart extends Payment{
 
     private GameStore itemInCart[];
     private int count;
@@ -33,26 +33,28 @@ public class Cart {
             this.count--;
             }
         }     
-
-           
-        
-
     }
     
-public void calculatetotalprice() {
-        for (int i = 0; i < count; i++) {
-            totalprice = itemInCart[i].getPrice();
-        }
+    public double calculatetotalprice(Cart cart) {
+        for (int i = 0; i < count; i++) {           
+            this.totalprice = this.totalprice+this.itemInCart[i].getPrice();
+         }
+        return this.totalprice;
         }
 
     
     
-    public void checkoutGame() {
-        
+    public void checkoutGame(double customermoney,Cart cart) {
+        super.payGame(customermoney,cart);
+        addToLibrary();
     }
     
     public double getTotalprice() {
-        return totalprice;
+        return this.totalprice;
+    }
+
+    private void addToLibrary() {
+        
     }
     
 }
