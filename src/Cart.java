@@ -11,7 +11,7 @@
 public class Cart {
     private GameStore itemInCart[];
     private int count;
-    private int quality;
+    private int qunatiity;
     private Game game;
     private double totalprice;
     
@@ -20,8 +20,8 @@ public class Cart {
         itemInCart = new GameStore[size];
     }
     
-    public boolean addGameTOCart(GameStore game,int quality){
-        if(quality == 0){
+    public boolean addGameTOCart(GameStore game,int quantity){
+        if(quantity == 0){
             return false;
         }
         itemInCart[count] = game;
