@@ -52,6 +52,10 @@ public class Cart extends Payment{
         return this.totalprice;
     }
 
+    public GameStore[] getItemInCart() {
+        return itemInCart;
+    }
+
     private void addToLibrary(Cart cart,GameLibrary library) {
         library.setLibrary(cart)= this.itemInCart;
     }

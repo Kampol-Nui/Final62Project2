@@ -9,13 +9,10 @@
  * @author ADMIN
  */
 public class GameLibrary {
-    private Cart myGameLibrary[];
-
-    public Cart[] getMyGameLibrary() {
-        return myGameLibrary;
-    }
+    private GameStore myGameLibrary[];
     
-    public void setLibrary(Cart cart){
-        this.myGameLibrary = cart;
+    public void addToLibrary(Cart cart){
+        this.myGameLibrary = cart.getItemInCart();
     }
+
 }
