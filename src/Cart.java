@@ -14,6 +14,7 @@ public class Cart extends Payment{
     private int count;
     private Game game;
     private double totalprice;
+    private CustomerAccount customerAccount;
 //    private double changemoney;
     
     public Cart(int size) {
@@ -62,6 +63,10 @@ public class Cart extends Payment{
 
     public GameStore[] getItemInCart() {
         return itemInCart;
+    }
+
+    public CustomerAccount getCustomerAccount() {
+        return customerAccount;
     }
 
    

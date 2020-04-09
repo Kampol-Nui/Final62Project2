@@ -8,20 +8,20 @@
  *
  * @author MINI
  */
-public class Payment extends CustomerAccount{
+public class Payment{
     //private CustomerAccount customermoney;
     private GameStore itemInCart[];
     
     public void payGame(Cart cart,GameLibrary library){
-        if(super.myMoney == cart.getTotalprice()){
+        if(cart.getCustomerAccount().getMyMoney() == cart.getTotalprice()){
             //call methods to keep game in the library
             library.addToLibrary(cart);
-            super.myMoney = 0;
-        }else if(this.myMoney > cart.getTotalprice()){
+            cart.getCustomerAccount().myMoney = 0;
+        }else if(cart.getCustomerAccount().getMyMoney() > cart.getTotalprice()){
             library.addToLibrary(cart);
 //            cart.calculateChangeMoney(customermoney);
 //            super.myMoney = cart.getChangeMoney();
-            super.myMoney = super.myMoney - cart.getTotalprice();
+            cart.getCustomerAccount().myMoney = cart.getCustomerAccount().myMoney - cart.getTotalprice();
             //customeraccount.getMyMoney() = customeraccount.getMyMoney()+ cart.getChangeMoney()  ;
             //customeraccount.calculateMyTotalMoney(cart.calculateChangeMoney(customermoney));
         }
