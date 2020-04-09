@@ -8,13 +8,14 @@
  *
  * @author MINI
  */
-public class Cart extends Payment{
+public class Cart {
 
     private GameStore itemInCart[];
     private int count;
     private Game game;
     private double totalprice;
     private CustomerAccount customerAccount;
+    private Payment paygame;
 //    private double changemoney;
     
     public Cart(int size) {
@@ -45,7 +46,7 @@ public class Cart extends Payment{
     
     
     public void checkoutGame(Cart cart,GameLibrary library) {
-        super.payGame(cart,library);
+        paygame.payGame(cart,library);
         
     }
     

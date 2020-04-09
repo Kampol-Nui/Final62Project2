@@ -9,7 +9,7 @@
  * @author MINI
  */
 public class CustomerAccount extends Account{
-    //private Cart myCart;
+    private Cart myCart;
     protected double myMoney;
     
     public CustomerAccount(){}
@@ -23,8 +23,8 @@ public class CustomerAccount extends Account{
         myCart.addGameTOCart(game, 1);
     }
     
-    public void customerCheckOut(double customermoney,Cart cart,GameLibrary library){
-        myCart.checkoutGame(customermoney,cart,library);
+    public void customerCheckOut(Cart cart,GameLibrary library){
+        myCart.checkoutGame(cart,library);
     }
 
     public double getMyMoney() {
