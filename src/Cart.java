@@ -20,20 +20,21 @@ public class Cart {
         itemInCart = new GameStore[size];
     }
     
-    public boolean addGameTOCart(GameStore game,int quantity){
-        if(quantity == 0){
-            return false;
-        }
-        itemInCart[count] = game;
+    public boolean addGameTOCart(GameStore game){
+        itemInCart[count++] = game;
             return true;
     }
     
     public void removeGameFromCart(GameStore game){
+        for (int i = 0; i < this.count; i++) {
+            if(game)
+            itemInCart[i] = null;         
+        }
         
     }
     
-    public void calculatetotalprice(Game game,int quality){
-       this.totalprice = quality*game.getPrice();
+    public void calculatetotalprice(Game game){
+       this.totalprice = game.getPrice();
     }
     
     public void checkoutGame(){
