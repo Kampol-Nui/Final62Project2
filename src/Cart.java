@@ -12,7 +12,6 @@ public class Cart extends Payment{
 
     private GameStore itemInCart[];
     private int count;
-    
     private Game game;
     private double totalprice;
     
