@@ -12,9 +12,9 @@ public class GameLibrary {
     private GameStore myGameLibrary[];
     
 
-    public void setLibrary(Cart cart){
-        //this.myGameLibrary = cart;
-    }
+//    public void setLibrary(Cart cart){
+//        //this.myGameLibrary = cart;
+//    }
     
     public void addToLibrary(Cart cart){
         this.myGameLibrary = cart.getItemInCart();

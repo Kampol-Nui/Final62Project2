@@ -12,9 +12,13 @@ public class Payment {
     private double customermoney;
     private GameStore itemInCart[];
     
-    public void payGame(double customermoney,Cart cart){
+    public void payGame(double customermoney,Cart cart,GameLibrary library){
         if(customermoney == cart.getTotalprice()){
-            //call methods to keep game in the library 
+            //call methods to keep game in the library
+            library.addToLibrary(cart);
+        }else if(customermoney > cart.getTotalprice()){
+            library.addToLibrary(cart);
+            cart.calculateChangeMoney(customermoney);
         }
     }
 }

@@ -17,7 +17,7 @@ public class CustomerAccount extends Account{
         myCart.addGameTOCart(game, 1);
     }
     
-    public void customerCheckOut(double customermoney,Cart cart){
-        myCart.checkoutGame(customermoney,cart);
+    public void customerCheckOut(double customermoney,Cart cart,GameLibrary library){
+        myCart.checkoutGame(customermoney,cart,library);
     }
 }
