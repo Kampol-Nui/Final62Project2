@@ -20,9 +20,5 @@ public class GameStore extends Game{
     public addGameToStore(Game game);
     
     public removeGameFromStore(Game game);
-
-    public GameStatus getGamestatus() {
-        return gamestatus;
-    }
     
 }
