@@ -8,17 +8,22 @@
  *
  * @author MINI
  */
-public class Payment {
-    private double customermoney;
+public class Payment extends CustomerAccount{
+    //private CustomerAccount customermoney;
     private GameStore itemInCart[];
     
-    public void payGame(double customermoney,Cart cart,GameLibrary library){
-        if(customermoney == cart.getTotalprice()){
+    public void payGame(Cart cart,GameLibrary library){
+        if(super.myMoney == cart.getTotalprice()){
             //call methods to keep game in the library
             library.addToLibrary(cart);
-        }else if(customermoney > cart.getTotalprice()){
+            super.myMoney = 0;
+        }else if(this.myMoney > cart.getTotalprice()){
             library.addToLibrary(cart);
-            cart.calculateChangeMoney(customermoney);
+//            cart.calculateChangeMoney(customermoney);
+//            super.myMoney = cart.getChangeMoney();
+            super.myMoney = super.myMoney - cart.getTotalprice();
+            //customeraccount.getMyMoney() = customeraccount.getMyMoney()+ cart.getChangeMoney()  ;
+            //customeraccount.calculateMyTotalMoney(cart.calculateChangeMoney(customermoney));
         }
     }
 }

@@ -9,9 +9,15 @@
  * @author MINI
  */
 public class CustomerAccount extends Account{
-    private Cart myCart;
-    public CustomerAccount(Cart cart) {
-        myCart = cart;
+    //private Cart myCart;
+    protected double myMoney;
+    
+    public CustomerAccount(){}
+    
+    
+    public CustomerAccount(double myMoney) {
+        //myCart = cart;
+        this.myMoney = myMoney;
     }
     public void customerAddGameToCart(GameStore game){
         myCart.addGameTOCart(game, 1);
@@ -20,4 +26,12 @@ public class CustomerAccount extends Account{
     public void customerCheckOut(double customermoney,Cart cart,GameLibrary library){
         myCart.checkoutGame(customermoney,cart,library);
     }
+
+    public double getMyMoney() {
+        return myMoney;
+    }
+    
+//    public double calculateMyTotalMoney(){
+//        
+//    }
 }

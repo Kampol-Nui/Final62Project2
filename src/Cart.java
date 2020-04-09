@@ -14,7 +14,7 @@ public class Cart extends Payment{
     private int count;
     private Game game;
     private double totalprice;
-    private double changemoney;
+//    private double changemoney;
     
     public Cart(int size) {
         itemInCart = new GameStore[size];
@@ -43,8 +43,8 @@ public class Cart extends Payment{
 
     
     
-    public void checkoutGame(double customermoney,Cart cart,GameLibrary library) {
-        super.payGame(customermoney,cart,library);
+    public void checkoutGame(Cart cart,GameLibrary library) {
+        super.payGame(cart,library);
         
     }
     
@@ -52,13 +52,13 @@ public class Cart extends Payment{
         return this.totalprice;
     }
     
-    public void calculateChangeMoney(double customermoney){
-        this.changemoney = customermoney - this.totalprice;
-    }
+//    public void calculateChangeMoney(double customermoney){
+//        this.changemoney = customermoney - this.totalprice;
+//    }
     
-    public double getChangeMoney(){
-        return this.changemoney;
-    }
+//    public double getChangeMoney(){
+//        return this.changemoney;
+//    }
 
     public GameStore[] getItemInCart() {
         return itemInCart;
