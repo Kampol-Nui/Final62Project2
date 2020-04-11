@@ -22,12 +22,12 @@ public class Cart {
         itemInCart = new GameStore[size];
     }
     
-    public boolean addGameTOCart(GameStore game) {
+    protected boolean addGameTOCart(GameStore game) {
         itemInCart[count++] = game;
         return true;
     }
     
-    public void removeGameFromCart(GameStore game) {
+    protected void removeGameFromCart(GameStore game) {
         for (int i = 0; i < this.count; i++) {
 
             if(game.equals(itemInCart[i])){

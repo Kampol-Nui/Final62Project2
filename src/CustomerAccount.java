@@ -20,7 +20,11 @@ public class CustomerAccount extends Account{
         this.myMoney = myMoney;
     }
     public void customerAddGameToCart(GameStore game){
-        myCart.addGameTOCart(game, 1);
+        myCart.addGameTOCart(game);
+    }
+    
+    public void customerRemoveGameFromCart(GameStore game){
+        myCart.removeGameFromCart(game);
     }
     
     public void customerCheckOut(Cart cart,GameLibrary library){
@@ -31,8 +35,8 @@ public class CustomerAccount extends Account{
         return this.myMoney;
     }
     
-    public double TopupMoney(double topupmoney){
-        return this.myMoney = this.myMoney + topupmoney;
+    public void TopupMoney(double topupmoney){
+         this.myMoney = this.myMoney + topupmoney;
     }
     
 //    public double calculateMyTotalMoney(){
