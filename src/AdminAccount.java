@@ -33,6 +33,7 @@ public class AdminAccount extends Account{
             if (game.equals(itemInStore[i])) {
                 itemInStore[i] = null;
                 this.count--;
+                itemInStore[i] = itemInStore[count];         
                 return true;
             }
         }
