@@ -10,29 +10,23 @@ import java.util.Objects;
  *
  * @author MINI
  */
-public abstract class GameStore {
+public  class GameStore {
 
     private Game itemInStore[];
     private Game game;
     private int count;
     private GameStatus gamestatus;
-
-    public GameStore() {
+    
+    
+    public GameStore(int size) {
        
-        this.itemInStore = new Game[10];
+        this.itemInStore = new Game[size];
     }
 
 
-    protected boolean addGameToStore(Game game) {
-        Objects.requireNonNull(game, "Game Can't be Null");
-        for (int i = 0; i < this.count; i++) {
-            if (game.equals(itemInStore[i])) {
-               return false;
-            }
-        }
-        this.itemInStore[count++] = game;
-         return true;
-    }
+//    protected boolean addGameToStore(Game game) {
+//       
+//    }
 
  
 
