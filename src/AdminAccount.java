@@ -19,7 +19,7 @@ public class AdminAccount extends Account{
         admin.addGameToStore(game);
     }
 
-    public boolean removeGameFromStore(Game game) {
+    public void removeGameFromStore(Game game) {
         admin.removeGameFromStore(game);
     }
 }
