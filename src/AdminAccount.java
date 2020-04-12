@@ -11,34 +11,15 @@
 import java.util.Objects;
 
 public class AdminAccount extends Account{
-
-    private Game itemInStore[];
+    
+    private AdminAccount admin;
     private int count;
 
-    public boolean addGameToStore(Game game) {
-        Objects.requireNonNull(game, "Game Can't be Null");
-        for (int i = 0; i < this.count; i++) {
-
-            if (game.equals(itemInStore[i])) {
-                return false;
-            }
-        }
-        this.itemInStore[count++] = game;
-        return true;
+    public void addGameToStore(Game game) {
+        admin.addGameToStore(game);
     }
 
     public boolean removeGameFromStore(Game game) {
-        Objects.requireNonNull(game, "Game Can't be Null");
-        for (int i = 0; i < this.count; i++) {
-            if (game.equals(itemInStore[i])) {
-                itemInStore[i] = null;
-                this.count--;
-                itemInStore[i] = itemInStore[count];
-                itemInStore[count] = null;
-                return true;
-            }
-        }
-        System.out.println("This game isn't in the Store");
-        return false;
+        admin.removeGameFromStore(game);
     }
 }
