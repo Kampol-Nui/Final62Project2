@@ -16,6 +16,12 @@ public class Game {
     private String title;
     private double price;
 
+    public Game(String id, String title, double price) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -42,6 +48,11 @@ public class Game {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" + "id=" + id + ", title=" + title + ", price=" + price + '}';
     }
 
     

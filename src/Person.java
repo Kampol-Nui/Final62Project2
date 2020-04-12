@@ -12,4 +12,10 @@ public class Person {
     private String PersonName;
     private String email;
     private String phone;
+    
+    public Person(String PersonName,String email,String phone){
+        this.PersonName = PersonName;
+        this.email = email;
+        this.phone = phone;
+    }
 }

@@ -11,11 +11,22 @@
 public class Test {
 
     public static void main(String[] args) {
-        Cart cart = new Cart(10);
-        CustomerAccount customer = new CustomerAccount(cart);
+        GameStore gameStore = new GameStore();
+
+        
+        Game game1 = new Game("01","TOMB RIDER",20);
+        Game game2 = new Game("02","RE7",60);
+        Game game3 = new Game("02","RE8",90);
         
         
+        gameStore.addGameToStore(game1);
+        gameStore.addGameToStore(game2);
+        gameStore.addGameToStore(game3);
+        gameStore.listGameFromStore();
         
+
+        
+       
     }
 
 }
