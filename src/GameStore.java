@@ -13,6 +13,7 @@ import java.util.Objects;
 public class GameStore {
 
     private Game itemInStore[];
+    private Game game;
     private int count;
     private GameStatus gamestatus;
 
@@ -33,6 +34,8 @@ public class GameStore {
         return true;
     }
 
+ 
+
     protected boolean removeGameFromStore(Game game) {
         Objects.requireNonNull(game, "Game Can't be Null");
         for (int i = 0; i < this.count; i++) {
@@ -52,6 +55,10 @@ public class GameStore {
         for (Game game : itemInStore) {
             System.out.println(game);
         }
+    }
+
+    public Game getGame() {
+        return game;
     }
 
 

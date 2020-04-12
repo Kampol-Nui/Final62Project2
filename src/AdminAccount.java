@@ -9,17 +9,19 @@
  * @author MINI
  */
 public class AdminAccount extends Account{
-
+    
+    private GameStore admin;
+            
     public AdminAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
     }
     
-    public boolean addGameToStore(Game game) {
-   
+    public void addGame(Game game) {
+        admin.addGameToStore(game);
     }
 
-    public boolean removeGameFromStore(Game game) {
-        
+    public void removeGame(Game game) {
+        admin.removeGameFromStore(game);
     }
 
 }

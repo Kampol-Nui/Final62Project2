@@ -41,9 +41,9 @@ public class Cart {
     
     public void calculatetotalprice(Cart cart) {
         for (int i = 0; i < count; i++) {           
-            this.totalprice = this.totalprice+this.itemInCart[i].getPrice();
+            this.totalprice = this.totalprice+this.itemInCart[i].getGame().getPrice();
          }       
-        }
+    }
 
     
     
