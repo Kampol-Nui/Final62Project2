@@ -33,6 +33,8 @@ public class Cart {
             if(game.equals(itemInCart[i])){
             itemInCart[i] = null;
             this.count--;
+            itemInCart[i] = itemInCart[count];
+            itemInCart[count] = null;
             }
         }     
     }
