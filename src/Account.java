@@ -17,6 +17,14 @@ public abstract class Account {
     private AccountStatus status;
     private Person person;
 
+    public Account(String username, String password, AccountStatus status, Person person) {
+        this.username = username;
+        this.password = password;
+        this.status = status.ACTIVE;
+        this.person = person;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

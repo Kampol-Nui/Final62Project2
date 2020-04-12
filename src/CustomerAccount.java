@@ -11,14 +11,14 @@
 public class CustomerAccount extends Account{
     private Cart myCart;
     protected double myMoney;
-    
-    public CustomerAccount(){}
-    
-    
-    public CustomerAccount(double myMoney) {
-        //myCart = cart;
+
+    public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
+        super(username, password, status, person);
+        this.myCart = myCart;
         this.myMoney = myMoney;
     }
+
+    
     public void customerAddGameToCart(GameStore game){
         myCart.addGameTOCart(game);
     }

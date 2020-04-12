@@ -25,7 +25,6 @@ public class GameStore {
     protected boolean addGameToStore(Game game) {
         Objects.requireNonNull(game, "Game Can't be Null");
         for (int i = 0; i < this.count; i++) {
-
             if (game.equals(itemInStore[i])) {
                 return false;
             }
