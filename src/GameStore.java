@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author MINI
  */
-public class GameStore {
+public abstract class GameStore {
 
     private Game itemInStore[];
     private Game game;
@@ -19,7 +19,7 @@ public class GameStore {
 
     public GameStore() {
        
-        this.itemInStore = new Game[100];
+        this.itemInStore = new Game[10];
     }
 
 
@@ -27,11 +27,11 @@ public class GameStore {
         Objects.requireNonNull(game, "Game Can't be Null");
         for (int i = 0; i < this.count; i++) {
             if (game.equals(itemInStore[i])) {
-                return false;
+               return false;
             }
         }
         this.itemInStore[count++] = game;
-        return true;
+         return true;
     }
 
  

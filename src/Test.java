@@ -11,7 +11,7 @@
 public class Test {
 
     public static void main(String[] args) {
-        GameStore gameStore = new GameStore();
+        //GameStore gameStore = new GameStore();
         Person person = new Person("Kumpol", "kumpol@gmail.com", "0945481112");
 
         
@@ -21,12 +21,12 @@ public class Test {
         
         AdminAccount admin = new  AdminAccount("NobodyFound", "007", AccountStatus.ACTIVE, person);
         
+        //gameStore.addGameToStore(game3);
+          admin.addGame(game3);
+//        admin.addGame(game2);
+//        admin.addGame(game1);
         
-        admin.addGame(game3);
-        admin.addGame(game2);
-        admin.addGame(game1);
-        
-        gameStore.listGameFromStore();
+        //gameStore.listGameFromStore();
         
 
         

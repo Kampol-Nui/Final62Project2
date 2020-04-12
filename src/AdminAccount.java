@@ -16,8 +16,10 @@ public class AdminAccount extends Account{
         super(username, password, status, person);
     }
     
-    public void addGame(Game game) {
+    public void addGame(Game game){
+        admin = new GameStore() {};
         admin.addGameToStore(game);
+        admin.listGameFromStore();
     }
 
     public void removeGame(Game game) {
