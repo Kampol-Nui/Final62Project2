@@ -40,7 +40,7 @@ public class AdminAccount extends Account{
 //    }
     
    
-    public void addGame(GameStore store,Game game) {
+    public void addGame(GameStore store,AdminAccount admin,Game game) {
         
          Objects.requireNonNull(game, "Game Can't be Null");
 //         for (int i = 0; i < count; i++) {
@@ -56,7 +56,7 @@ public class AdminAccount extends Account{
 
          //this.game[count++] = game;
          
-         store.addGame(game);
+         store.addGame(admin,game);
         // return game ;
     }
 

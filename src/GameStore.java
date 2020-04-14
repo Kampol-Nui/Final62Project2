@@ -24,8 +24,9 @@ public class GameStore {
     }
 
 
-    public  boolean addGame(Game game){
-        //Objects.requireNonNull(admin, "Game Can't be Null");
+    public  boolean addGame(AdminAccount admin,Game game){
+        Objects.requireNonNull(admin, "Game Can't be Null");
+        //if(ac instanceof AdminAccount){
         for (int i = 0; i < this.count; i++) {
            if(this.itemInStore[i].equals(game)){
                System.out.println("Game is already in the store");
@@ -35,6 +36,8 @@ public class GameStore {
         }
         this.itemInStore[count++] = game;//admin.addGame(game);
                return true;
+        //return false;
+        
         //return false;
     }
 
@@ -71,9 +74,9 @@ public class GameStore {
         }
     }
 
-//    public Game getGame() {
-//        return game;
-//    }
+    public Game getGame(int i) {
+        return this.itemInStore[i];
+    }
 
 
 }
