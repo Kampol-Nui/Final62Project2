@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author MINI
  */
-public  class GameStore {
+public class GameStore {
 
     private Game itemInStore[];
    // private Game game;
@@ -24,8 +24,8 @@ public  class GameStore {
     }
 
 
-    public  boolean addGame(AdminAccount admin,Game game){
-        Objects.requireNonNull(admin, "Game Can't be Null");
+    public  boolean addGame(Game game){
+        //Objects.requireNonNull(admin, "Game Can't be Null");
         for (int i = 0; i < this.count; i++) {
            if(this.itemInStore[i].equals(game)){
                System.out.println("Game is already in the store");
