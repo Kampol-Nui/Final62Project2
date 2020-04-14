@@ -24,9 +24,10 @@ public  class GameStore {
     }
 
 
-//    protected boolean addGameToStore(Game game) {
-//       
-//    }
+    public boolean addGame(AdminAccount admin,Game game){
+        this.itemInStore[count++]= admin.addGame(game);
+        return true;
+    }
 
  
 

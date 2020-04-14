@@ -13,9 +13,9 @@ import java.util.Objects;
  */
 public class AdminAccount extends Account{
     
-    private GameStore admin;
-    private Game[] itemInStore;
+    private Game[] game;
     private int count;
+    
     public AdminAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
     }
@@ -23,24 +23,28 @@ public class AdminAccount extends Account{
 //    public void setStoreSize(int size){
 //     admin = new GameStore(size) {};
 //    }
-    public boolean addGame(Game game){
+//    public boolean addGame(Game game){
+//        Objects.requireNonNull(game, "Game Can't be Null");
+//        this.itemInStore = new Game[10];
+//        for (int i = 0; i <= this.count; i++) {
+//            if (game.equals(this.itemInStore[i])) {
+//               return false;
+//            }
+//        }
+//        this.itemInStore[count++] = game;
+//         return true;
+//        //admin.addGameToStore(game);
+//       // admin.listGameFromStore();
+//    }
+    public Game addGame(Game game) {
         Objects.requireNonNull(game, "Game Can't be Null");
-        this.itemInStore = new Game[10];
-        for (int i = 0; i <= this.count; i++) {
-            if (game.equals(this.itemInStore[i])) {
-               return false;
-            }
-        }
-        this.itemInStore[count++] = game;
-         return true;
-        //admin.addGameToStore(game);
-       // admin.listGameFromStore();
+        return this.game[count++] = game;
     }
 
-    public void removeGame(Game game) {
-        admin.removeGameFromStore(game);
-    }
-    
+//    public void removeGame(Game game) {
+//        admin.removeGameFromStore(game);
+//    }
+//    
 //    public void listGameFromStore(){
 //    admin.listGameFromStore();
 //    }
