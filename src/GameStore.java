@@ -13,7 +13,7 @@ import java.util.Objects;
 public  class GameStore {
 
     private Game itemInStore[];
-    private Game game;
+   // private Game game;
     private int count;
     private GameStatus gamestatus;
     
@@ -25,23 +25,39 @@ public  class GameStore {
 
 
     public boolean addGame(AdminAccount admin,Game game){
-        this.itemInStore[count++]= admin.addGame(game);
-        return true;
+        Objects.requireNonNull(admin, "Game Can't be Null");
+        for (int i = 0; i < this.count; i++) {
+           if(this.itemInStore[i].equals(game)){
+               System.out.println("Game is already in the store");
+               return false;
+          }
+            
+        }
+        this.itemInStore[count++] = admin.addGame(game);
+               return true;
+        //return false;
     }
 
  
 
-    protected boolean removeGameFromStore(Game game) {
+    protected boolean removeGame(AdminAccount admin,Game game) {
         Objects.requireNonNull(game, "Game Can't be Null");
-        for (int i = 0; i < this.count; i++) {
-            if (game.equals(itemInStore[i])) {
-                itemInStore[i] = null;
-                this.count--;
-                itemInStore[i] = itemInStore[count];
-                itemInStore[count] = null;
-                return true;
-            }
+//        for (int i = 0; i < this.count; i++) {
+//            if (game.equals(itemInStore[i])) {
+//                itemInStore[i] = null;
+//                this.count--;
+//                itemInStore[i] = itemInStore[count];
+//                itemInStore[count] = null;
+//                return true;
+//            }
+//        }
+        for (int i = 0; i < count; i++) {
+             this.itemInStore[i] = admin.removeGame(game);
+             this.count--;
+             this.itemInStore[i] = this.itemInStore[count];
+             this.itemInStore[count] = null; 
         }
+       
         System.out.println("This game isn't in the Store");
         return false;
     }
@@ -52,9 +68,9 @@ public  class GameStore {
         }
     }
 
-    public Game getGame() {
-        return game;
-    }
+//    public Game getGame() {
+//        return game;
+//    }
 
 
 }

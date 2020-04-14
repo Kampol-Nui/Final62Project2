@@ -13,11 +13,12 @@ import java.util.Objects;
  */
 public class AdminAccount extends Account{
     
-    private Game[] game;
+   // private Game[] game;
     private int count;
     
     public AdminAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
+        //this.game = new Game[3];
     }
     
 //    public void setStoreSize(int size){
@@ -36,11 +37,46 @@ public class AdminAccount extends Account{
 //        //admin.addGameToStore(game);
 //       // admin.listGameFromStore();
 //    }
+    
+   
     public Game addGame(Game game) {
-        Objects.requireNonNull(game, "Game Can't be Null");
-        return this.game[count++] = game;
+        
+         Objects.requireNonNull(game, "Game Can't be Null");
+//         for (int i = 0; i < count; i++) {
+//            if(game.equals(this.game[i])){
+//                System.out.println("The Game is already in the store");
+//                
+//         }else{
+//             this.game[count++] = game;
+//            }
+//        }
+//        
+//          return this.game[count];
+
+         //this.game[count++] = game;
+         
+         
+         return game ;
     }
 
+    
+//    public Game removeGame(Game game){
+//        Objects.requireNonNull(game,"Game Can't be Null");
+//        int i;
+//        for ( i = 0; i < count; i++) {
+//            if(game.equals(this.game[i])){
+//                this.game[i] = null;
+//                count --;
+//                this.game[i] = this.game[count];
+//                this.game[count] = null;
+//            }else{
+//                System.out.println("The Game isn't in the store");
+//            }
+//        }
+//        return this.game[i];
+//    }
+    
+    
 //    public void removeGame(Game game) {
 //        admin.removeGameFromStore(game);
 //    }
