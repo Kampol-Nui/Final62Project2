@@ -13,12 +13,13 @@ import java.util.Objects;
  */
 public class AdminAccount extends Account{
     
-   // private Game[] game;
+    private Game[] game;
     private int count;
     
     public AdminAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
-        //this.game = new Game[3];
+        this.game = new Game[3];
+        
     }
     
 //    public void setStoreSize(int size){
@@ -39,7 +40,7 @@ public class AdminAccount extends Account{
 //    }
     
    
-    public Game addGame(Game game) {
+    public void addGame(GameStore store,AdminAccount admin,Game game) {
         
          Objects.requireNonNull(game, "Game Can't be Null");
 //         for (int i = 0; i < count; i++) {
@@ -55,12 +56,12 @@ public class AdminAccount extends Account{
 
          //this.game[count++] = game;
          
-         
-         return game ;
+         store.addGame(admin,game);
+        // return game ;
     }
 
     
-//    public Game removeGame(Game game){
+     public Game removeGame(Game game){
 //        Objects.requireNonNull(game,"Game Can't be Null");
 //        int i;
 //        for ( i = 0; i < count; i++) {
@@ -73,8 +74,8 @@ public class AdminAccount extends Account{
 //                System.out.println("The Game isn't in the store");
 //            }
 //        }
-//        return this.game[i];
-//    }
+        return game;
+     }
     
     
 //    public void removeGame(Game game) {

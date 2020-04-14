@@ -26,15 +26,30 @@ public class Test {
 //        admin.addGame(game2);
 //        admin.addGame(game1);
           //admin.listGameFromStore();
-        admin.addGame(game2);
-        admin.addGame(game3);
-         gameStore.addGame(admin, game3);
-         gameStore.addGame(admin, game2);
-         gameStore.addGame(admin, game3);
-         gameStore.addGame(admin, game1);
+        admin.addGame(gameStore,admin,game1);
+        admin.addGame(gameStore,admin,game2);
+        admin.addGame(gameStore, admin, game3);
+         //gameStore.addGame(admin, game3);
+//         gameStore.addGame(admin, game1);
+//         gameStore.addGame(admin, game2);
+//         gameStore.addGame(admin, game3);
+        gameStore.listGameFromStore();
+        gameStore.removeGame(admin, game3);
+        System.out.println("-----------------");
         gameStore.listGameFromStore();
         
-
+        
+        System.out.println("-----------------");
+        gameStore.removeGame(admin, game3);
+        gameStore.listGameFromStore();
+        
+        System.out.println("-----------------");
+        gameStore.removeGame(admin, game2);
+        gameStore.listGameFromStore();
+        
+        System.out.println("-----------------");
+        gameStore.removeGame(admin, game2);
+        gameStore.listGameFromStore();
         
        
     }
