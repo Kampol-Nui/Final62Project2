@@ -22,13 +22,13 @@ public class Cart {
     }
     
     protected boolean addGameTOCart(GameStore allitemInStore, String title) {
-        for (int i = 0; i < allitemInStore.getItemInStore().length ; i++) {
+        for (int i = 0; i < allitemInStore.getCount(); i++) {
             if(allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)){
                 itemInCart[count++] = allitemInStore.getGame(i);
+                return true;
             }
-            
         }
-        return true;
+        return false;
     }
     
     protected void removeGameFromCart(GameStore game) {

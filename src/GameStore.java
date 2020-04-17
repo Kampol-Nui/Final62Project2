@@ -79,5 +79,9 @@ public class GameStore {
         return itemInStore;
     }
 
+    public int getCount() {
+        return count;
+    }
+
 
 }
