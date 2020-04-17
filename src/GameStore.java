@@ -45,25 +45,15 @@ public class GameStore {
 
     protected boolean removeGame(AdminAccount admin,Game game) {
         Objects.requireNonNull(game, "Game Can't be Null");
-//        for (int i = 0; i < this.count; i++) {
-//            if (game.equals(itemInStore[i])) {
-//                itemInStore[i] = null;
-//                this.count--;
-//                itemInStore[i] = itemInStore[count];
-//                itemInStore[count] = null;
-//                return true;
-//            }
-//        }
         for (int i = 0; i < count; i++) {
             if(game.equals(this.itemInStore[i])){
-             this.itemInStore[i] = admin.removeGame(game);
              this.count--;
              this.itemInStore[i] = this.itemInStore[count];
              this.itemInStore[count] = null;
              return true;
             }
         }
-       
+        
         System.out.println("This game isn't in the Store");
         return false;
     }

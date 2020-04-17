@@ -34,21 +34,21 @@ public class Test {
 //         gameStore.addGame(admin, game2);
 //         gameStore.addGame(admin, game3);
         gameStore.listGameFromStore();
-        gameStore.removeGame(admin, game3);
+        admin.removeGame(gameStore, admin, game1);
         System.out.println("-----------------");
         gameStore.listGameFromStore();
         
         
         System.out.println("-----------------");
-        gameStore.removeGame(admin, game3);
+        admin.removeGame(gameStore, admin, game2);
         gameStore.listGameFromStore();
         
         System.out.println("-----------------");
-        gameStore.removeGame(admin, game2);
+        admin.removeGame(gameStore, admin, game3);
         gameStore.listGameFromStore();
         
         System.out.println("-----------------");
-        gameStore.removeGame(admin, game2);
+        admin.removeGame(gameStore, admin, game3);
         gameStore.listGameFromStore();
         
        

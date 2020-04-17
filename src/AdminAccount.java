@@ -40,41 +40,14 @@ public class AdminAccount extends Account{
 //    }
     
    
-    public void addGame(GameStore store,AdminAccount admin,Game game) {
-        
+    public void addGame(GameStore store,AdminAccount admin,Game game) {       
          Objects.requireNonNull(game, "Game Can't be Null");
-//         for (int i = 0; i < count; i++) {
-//            if(game.equals(this.game[i])){
-//                System.out.println("The Game is already in the store");
-//                
-//         }else{
-//             this.game[count++] = game;
-//            }
-//        }
-//        
-//          return this.game[count];
-
-         //this.game[count++] = game;
-         
          store.addGame(admin,game);
-        // return game ;
     }
 
     
-     public Game removeGame(Game game){
-//        Objects.requireNonNull(game,"Game Can't be Null");
-//        int i;
-//        for ( i = 0; i < count; i++) {
-//            if(game.equals(this.game[i])){
-//                this.game[i] = null;
-//                count --;
-//                this.game[i] = this.game[count];
-//                this.game[count] = null;
-//            }else{
-//                System.out.println("The Game isn't in the store");
-//            }
-//        }
-        return game;
+     public void removeGame(GameStore store,AdminAccount admin,Game game){
+         store.removeGame(admin, game);
      }
     
     
