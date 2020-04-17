@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /*
@@ -13,12 +14,13 @@ import java.util.Objects;
  */
 public class AdminAccount extends Account{
     
-    private Game[] game;
-    private int count;
+    //private Game game;
+   // private int count;
     
     public AdminAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
-        this.game = new Game[3];
+        //ArrayList<AdminAccount> ad = new ArrayList<AdminAccount>();
+        //game = new Game[10];
         
     }
     

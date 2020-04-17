@@ -58,15 +58,22 @@ public class GameStore {
         return false;
     }
 
-    public void listGameFromStore() {
+    public boolean listGameFromStore() {
         for (Game game : itemInStore) {
             System.out.println(game);
+            
         }
+        return false;
     }
 
     public Game getGame(int i) {
         return this.itemInStore[i];
     }
+
+//    @Override
+//    public String toString() {
+//        return "GameStore{" + "itemInStore=" +listGameFromStore() + '}';
+//    }
 
 
 }

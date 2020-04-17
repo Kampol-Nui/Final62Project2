@@ -64,13 +64,22 @@ public class Cart {
 //        return this.changemoney;
 //    }
 
-    public GameStore[] getItemInCart() {
-        return itemInCart;
+    public void getItemInCart() {
+        for (int i = 0; i < count; i++) {
+            //System.out.println(this.itemInCart[i]);
+            this.itemInCart[i].listGameFromStore();
+        }
+        
     }
 
     public CustomerAccount getCustomerAccount() {
         return customerAccount;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Cart{" + "itemInCart=" + itemInCart + '}';
+//    }
 
    
 

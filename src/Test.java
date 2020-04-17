@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,9 +29,13 @@ public class Test {
 //        admin.addGame(game2);
 //        admin.addGame(game1);
           //admin.listGameFromStore();
+        //ArrayList<AdminAccount> ad = new ArrayList<AdminAccount>();
+        
         admin.addGame(gameStore,admin,game1);
         admin.addGame(gameStore,admin,game2);
         admin.addGame(gameStore,admin,game3);
+        cu1.customerAddGameToCart(c1, gameStore);
+        c1.getItemInCart();
          //gameStore.addGame(admin, game3);
          //gameStore.addGame(cu1, game1);
 //         gameStore.addGame(admin, game2);
