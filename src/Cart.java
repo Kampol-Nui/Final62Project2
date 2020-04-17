@@ -9,21 +9,25 @@
  * @author MINI
  */
 public class Cart {
-
-    private GameStore itemInCart[];
+//    private GameStore itemInStore; 
     private int count;
-    private Game game;
     private double totalprice;
     private CustomerAccount customerAccount;
     private Payment paygame;
+    private Game itemInCart[];
 //    private double changemoney;
     
     public Cart(int size) {
-        itemInCart = new GameStore[size];
+        itemInCart = new Game[size];
     }
     
-    protected boolean addGameTOCart(GameStore game) {
-        itemInCart[count++] = game;
+    protected boolean addGameTOCart(GameStore allitemInStore, String title) {
+        for (int i = 0; i < allitemInStore.getItemInStore().length ; i++) {
+            if(allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)){
+                itemInCart[count++] = allitemInStore.getGame(i);
+            }
+            
+        }
         return true;
     }
     
@@ -39,18 +43,18 @@ public class Cart {
         }     
     }
     
-    public void calculatetotalprice(Cart cart) {
-        for (int i = 0; i < count; i++) {           
-            this.totalprice = this.totalprice+this.itemInCart[i].getGame(i).getPrice();
-         }       
-    }
+//    public void calculatetotalprice(Cart cart) {
+//        for (int i = 0; i < count; i++) {           
+//            this.totalprice = this.totalprice+this.itemInCart[i].getGame(i).getPrice();
+//         }       
+//    }
 
     
     
-    public void checkoutGame(Cart cart,GameLibrary library) {
-        paygame.payGame(cart,library);
-        
-    }
+//    public void checkoutGame(Cart cart,GameLibrary library) {
+//        paygame.payGame(cart,library);
+//        
+//    }
     
     public double getTotalprice() {
         return this.totalprice;
@@ -64,13 +68,13 @@ public class Cart {
 //        return this.changemoney;
 //    }
 
-    public void getItemInCart() {
-        for (int i = 0; i < count; i++) {
-            //System.out.println(this.itemInCart[i]);
-            this.itemInCart[i].listGameFromStore();
-        }
-        
-    }
+//    public void getItemInCart() {
+//        for (int i = 0; i < count; i++) {
+//            //System.out.println(this.itemInCart[i]);
+//            this.itemInCart[i].listGameFromStore();
+//        }
+//        
+//    }
 
     public CustomerAccount getCustomerAccount() {
         return customerAccount;
@@ -80,6 +84,13 @@ public class Cart {
 //    public String toString() {
 //        return "Cart{" + "itemInCart=" + itemInCart + '}';
 //    }
+
+    public boolean listGameFromCart() {
+        for (Game game : itemInCart) {
+            System.out.println(game);
+        }
+        return false;
+    }
 
    
 

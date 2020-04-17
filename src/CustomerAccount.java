@@ -19,17 +19,17 @@ public class CustomerAccount extends Account{
     }
 
     
-    public void customerAddGameToCart(Cart cart,GameStore game){
-        cart.addGameTOCart(game);
+    public void customerAddGameToCart(Cart cart,GameStore allitemInStore,String title){
+        cart.addGameTOCart(allitemInStore, title);
     }
     
     public void customerRemoveGameFromCart(Cart cart,GameStore game){
         cart.removeGameFromCart(game);
     }
     
-    public void customerCheckOut(Cart cart,GameLibrary library){
-        cart.checkoutGame(cart,library);
-    }
+//    public void customerCheckOut(Cart cart,GameLibrary library){
+//        cart.checkoutGame(cart,library);
+//    }
 
     public double getMyMoney() {
         return this.myMoney;

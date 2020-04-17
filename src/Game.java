@@ -57,6 +57,10 @@ public class Game {
         return "Game{" + "id=" + id + ", title=" + title + ", price=" + price + '}';
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     
     
 }

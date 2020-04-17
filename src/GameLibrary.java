@@ -16,9 +16,9 @@ public class GameLibrary {
 //        //this.myGameLibrary = cart;
 //    }
     
-    public void addToLibrary(Cart cart){
-        this.myGameLibrary = cart.getItemInCart();
-    }
+//    public void addToLibrary(Cart cart){
+//        this.myGameLibrary = cart.getItemInCart();
+//    }
 
 
 }

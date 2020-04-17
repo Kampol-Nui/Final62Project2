@@ -75,5 +75,9 @@ public class GameStore {
 //        return "GameStore{" + "itemInStore=" +listGameFromStore() + '}';
 //    }
 
+    public Game[] getItemInStore() {
+        return itemInStore;
+    }
+
 
 }
