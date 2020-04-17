@@ -23,8 +23,8 @@ public class CustomerAccount extends Account{
         cart.addGameTOCart(allitemInStore, title);
     }
     
-    public void customerRemoveGameFromCart(Cart cart,GameStore game){
-        cart.removeGameFromCart(game);
+    public void customerRemoveGameFromCart(Cart cart,GameStore allitemInStore,String title){
+        cart.removeGameFromCart(allitemInStore,title);
     }
     
 //    public void customerCheckOut(Cart cart,GameLibrary library){
