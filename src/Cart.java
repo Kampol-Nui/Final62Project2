@@ -1,4 +1,5 @@
 
+
 import java.util.ArrayList;
 
 /*
@@ -19,18 +20,17 @@ public class Cart {
     private Payment paygame;
     //  private Game itemInCart[];
     private ArrayList<Game> itemInCart;
+
 //    private double changemoney;
 
     public Cart() {
         itemInCart = new ArrayList<>();
     }
-    protected boolean addGameTOCart(GameStore allitemInStore, String title) {
-
-        for (int i = 0; i < allitemInStore.games.size(); i++) {
-            if (allitemInStore.getGame(i).getTitle().equals(title)) {
-                this.itemInCart.add(allitemInStore.getGame(i));
+    protected boolean addGameTOCart(String title) {
+        for (int i = 0; i < GameStore.games.size(); i++) {
+            if (GameStore.games.listIterator(i).next().getTitle().equals(title)) {
+                this.itemInCart.add(GameStore.games.listIterator(i).next());
             }
-
         }
 
         return false;
@@ -48,7 +48,6 @@ public class Cart {
 //        }     
 //    }
     protected boolean removeGameFromCart(GameStore allitemInStore, String title) {
-        
         for (int i = 0; i < allitemInStore.games.size(); i++) {
             if (allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)) {
                 this.itemInCart.remove(allitemInStore.getGame(i));

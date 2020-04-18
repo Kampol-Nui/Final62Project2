@@ -14,14 +14,13 @@ import java.util.Objects;
 public class GameStore {
 
     //private Game itemInStore[];
-    protected ArrayList<Game> games;
+    protected static ArrayList<Game> games;
     // private Game game;
 
 //    private int count;
     private GameStatus gamestatus;
 
     public GameStore() {
-
         games = new ArrayList<>();
     }
 
@@ -94,4 +93,8 @@ public class GameStore {
 //    public int getCount() {
 //        return count;
 //    }
+
+    public ArrayList<Game> getGames() {
+        return games;
+    }
 }

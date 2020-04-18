@@ -9,18 +9,18 @@
  * @author MINI
  */
 public class CustomerAccount extends Account{
-    private Cart myCart;
+    private Cart cart;
     protected double myMoney;
 
     public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
-        this.myCart = myCart;
+        this.cart = myCart;
         this.myMoney = myMoney;
     }
 
     
-    public void customerAddGameToCart(Cart cart,GameStore allitemInStore,String title){
-        cart.addGameTOCart(allitemInStore, title);
+    public void customerAddGameToCart(String title){
+        cart.addGameTOCart(title);
     }
     
     public void customerRemoveGameFromCart(Cart cart,GameStore allitemInStore,String title){
