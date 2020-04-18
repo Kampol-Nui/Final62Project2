@@ -14,29 +14,25 @@ import java.util.Objects;
 public class GameStore {
 
     //private Game itemInStore[];
-    protected ArrayList<Game> games = new ArrayList();
-   // private Game game;
-    
+    protected ArrayList<Game> games;
+    // private Game game;
+
 //    private int count;
     private GameStatus gamestatus;
-  
-    
-//    public GameStore(int size) {
-//       
-//        this.itemInStore = new Game[size];
-//    }
 
-    public boolean addGame(AdminAccount admin,Game game){
-    
-    
-    games.add(game);
-       
-    return true;
+    public GameStore() {
+
+        games = new ArrayList<>();
     }
-    
-    public boolean removeGame(AdminAccount admin,Game game){
-    games.remove(game);
-    return true;
+
+    public boolean addGame(AdminAccount admin, Game game) {
+        games.add(game);
+        return true;
+    }
+
+    public boolean removeGame(AdminAccount admin, Game game) {
+        games.remove(game);
+        return true;
     }
 //    public  boolean addGame(AdminAccount admin,Game game){
 //        Objects.requireNonNull(admin, "Game Can't be Null");
@@ -55,8 +51,6 @@ public class GameStore {
 //        //return false;
 //    }
 
- 
-
 //    protected boolean removeGame(AdminAccount admin,Game game) {
 //        Objects.requireNonNull(game, "Game Can't be Null");
 //        for (int i = 0; i < count; i++) {
@@ -71,13 +65,12 @@ public class GameStore {
 //        System.out.println("This game isn't in the Store");
 //        return false;
 //    }
-
     public boolean listGameFromStore() {
         System.out.println("Your Store Has ");
         for (Game game : games) {
-            System.out.print(game+"\t");
-             System.out.println("Index is "+games.indexOf(game));
-            
+            System.out.print(game + "\t");
+            System.out.println("Index is " + games.indexOf(game));
+
         }
         return false;
     }
@@ -86,23 +79,19 @@ public class GameStore {
 //        return this.itemInStore[i];
 //        
 //    }
-public Game getGame(int i) {
+    public Game getGame(int i) {
         return games.get(i);
-        
+
     }
-    
+
 //    @Override
 //    public String toString() {
 //        return "GameStore{" + "itemInStore=" +listGameFromStore() + '}';
 //    }
-
 //    public Game[] getItemInStore() {
 //        return itemInStore;
 //    }
-
 //    public int getCount() {
 //        return count;
 //    }
-
-
 }

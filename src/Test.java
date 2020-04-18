@@ -47,13 +47,13 @@ public class Test {
          //gameStore.addGame(admin, game2);
          //gameStore.addGame(admin, game3);
         gameStore.listGameFromStore();
-        admin.removeGame(gameStore, admin, game1);
+        admin.removeGame(gameStore, admin, game2);
         System.out.println("-----------------");
         gameStore.listGameFromStore();
         
         
         System.out.println("-----------------");
-        admin.removeGame(gameStore, admin, game2);
+        admin.removeGame(gameStore, admin, game1);
         gameStore.listGameFromStore();
         
         System.out.println("-----------------");
