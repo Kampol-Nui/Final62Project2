@@ -14,6 +14,7 @@ public class Test {
 
     public static void main(String[] args) {
         GameStore gameStore = new GameStore();
+        GameStore gameStore2 = new GameStore();
         Person person = new Person("Kumpol", "kumpol@gmail.com", "0945481112");
         Person person2 = new Person("asds", "asdsd@gmail.com", "16545416");
         Cart c1 = new Cart();
@@ -31,9 +32,9 @@ public class Test {
           //admin.listGameFromStore();
         //ArrayList<AdminAccount> ad = new ArrayList<AdminAccount>();
         
-        admin.addGame(gameStore,admin,game1);
-        admin.addGame(gameStore,admin,game2);
-        admin.addGame(gameStore,admin,game3);
+        admin.addGame(admin,game1);
+        admin.addGame(admin,game2);
+        admin.addGame(admin,game3);
 //        cus1.customerAddGameToCart(c1, gameStore, "TOMB RIDER");
 //        cus1.customerAddGameToCart(c1, gameStore, "RE7");
           cus1.customerAddGameToCart( "TOMB RIDER");
@@ -51,7 +52,8 @@ public class Test {
          //gameStore.addGame(admin, game2);
          //gameStore.addGame(admin, game3);
         gameStore.listGameFromStore();
-        admin.removeGame(gameStore,admin, game2);
+        gameStore2.listGameFromStore();
+        admin.removeGame(admin, game2);
         
         
         System.out.println("-----------------");
@@ -60,7 +62,7 @@ public class Test {
         
         
         System.out.println("-----------------");
-        admin.removeGame(gameStore,admin, game1);
+        admin.removeGame(admin, game1);
         gameStore.listGameFromStore();
      
 

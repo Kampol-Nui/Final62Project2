@@ -25,6 +25,7 @@ public class CustomerAccount extends Account{
     
     public void customerRemoveGameFromCart(String title){
         cart.removeGameFromCart(title);
+        
     }
     
 //    public void customerCheckOut(Cart cart,GameLibrary library){

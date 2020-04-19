@@ -24,12 +24,12 @@ public class GameStore {
         games = new ArrayList<Game>();
     }
 
-    public boolean addGame(AdminAccount admin, Game game) {
+    protected static boolean addGame(AdminAccount admin, Game game) {
         games.add(game);
         return true;
     }
 
-    public boolean removeGame(AdminAccount admin, Game game) {
+    protected static boolean removeGame(AdminAccount admin, Game game) {
         games.remove(game);
         return true;
     }
