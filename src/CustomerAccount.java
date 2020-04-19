@@ -16,8 +16,9 @@ public class CustomerAccount extends Account{
     private double myMoney;
     protected ArrayList<Game> myGameLibrary;
 
+    
     public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
-        super(username, password, status, person);
+        super(username, password, person);
         this.cart = myCart;
         this.myMoney = myMoney;
         this.myGameLibrary = new ArrayList<>();

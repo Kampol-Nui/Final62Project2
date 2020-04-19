@@ -14,61 +14,23 @@ import java.util.Objects;
 public class GameStore {
 
     //private Game itemInStore[];
-    protected  ArrayList<Game> games;
+    protected ArrayList<Game> games;
     // private Game game;
 
 //    private int count;
     private GameStatus gamestatus;
+    private String name;
 
-    public GameStore() {
-        games = new ArrayList<Game>();
-        
+    public GameStore(String name) {
+        this.name = name;
+        games = new ArrayList<>();
+
     }
 
-//    protected static boolean addGame(AdminAccount admin, Game game) {
-//        games.add(game);
-//        return true;
-//    }
-//
-//    protected static boolean removeGame(AdminAccount admin, Game game) {
-//        games.remove(game);
-//        return true;
-//    }
-//    public  boolean addGame(AdminAccount admin,Game game){
-//        Objects.requireNonNull(admin, "Game Can't be Null");
-//        //if(ac instanceof AdminAccount){
-//        for (int i = 0; i < this.count; i++) {
-//           if(this.itemInStore[i].equals(game)){
-//               System.out.println("Game is already in the store");
-//               return false;
-//          }
-//            
-//        }
-//        this.itemInStore[count++] = game;//admin.addGame(game);
-//               return true;
-//        //return false;
-//        
-//        //return false;
-//    }
-
-//    protected boolean removeGame(AdminAccount admin,Game game) {
-//        Objects.requireNonNull(game, "Game Can't be Null");
-//        for (int i = 0; i < count; i++) {
-//            if(game.equals(this.itemInStore[i])){
-//             this.count--;
-//             this.itemInStore[i] = this.itemInStore[count];
-//             this.itemInStore[count] = null;
-//             return true;
-//            }
-//        }
-//        
-//        System.out.println("This game isn't in the Store");
-//        return false;
-//    }
     public boolean listGameFromStore() {
-        System.out.println("Your Store Has ");
-        if(this.games.size()==0){
-            System.out.println("nothing");
+        System.out.println("************************ Game in " + this + " *************************");
+        if (this.games.isEmpty()) {
+            System.out.println("This Store is empty");
             return false;
         }
         for (Game game : games) {
@@ -79,58 +41,67 @@ public class GameStore {
         return true;
     }
 
-//    public Game getGame(int i) {
-//        return this.itemInStore[i];
-//        
-//    }
     public Game getGame(int i) {
         return games.get(i);
 
     }
 
-//    @Override
-//    public String toString() {
-//        return "GameStore{" + "itemInStore=" +listGameFromStore() + '}';
-//    }
-//    public Game[] getItemInStore() {
-//        return itemInStore;
-//    }
-//    public int getCount() {
-//        return count;
-//    }
-
     public ArrayList<Game> getGames() {
         return games;
     }
-    
-      public void addGame(AdminAccount admin,Game game) {       
-         Objects.requireNonNull(game, "Game Can't be Null");
-         //store.addGame(admin,game);
-         
-         //GameStore.addGame(admin, game);
-         //this.store.addGame(admin, game);
+
+    public boolean addGame(AdminAccount admin, Game game) {
+        if (game == null) {
+            System.out.println("Not Null");
+            return false;
+        }
+        for (int i = 0; i < this.games.size(); i++) {
+            if (this.games.get(i).equals(game)) {
+                System.out.println("You already have this game");
+                return false;
+            }
+        }
         game.setStatus(GameStatus.ONSALED);
         this.games.add(game);
-        
+        System.out.println("Successfully Added");
+        return true;
+
     }
 
-    public boolean changeStatus(AdminAccount admin,String title,GameStatus status){
+    public boolean changeStatus(AdminAccount admin, String title, GameStatus status) {
         for (int i = 0; i < this.games.size(); i++) {
-            if(this.games.get(i).getTitle().equals(title)){
+            if (this.games.get(i).getTitle().equals(title)) {
                 this.games.get(i).setStatus(status);
                 return true;
             }
-            
+
         }
-         System.out.println("not found the game to add");
+        System.out.println("not found the game to add");
         return false;
     }
-    public void removeGame(AdminAccount admin,Game game){
-            Objects.requireNonNull(game,"Game Can't be Null");
-       //GameStore.removeGame(admin, game);
-//         cart.clearCart();
-            //this.store.removeGame(admin, game);
-            //this.cart.clearCart();
-            this.games.remove(game);
-     }
+
+    public boolean removeGame(AdminAccount admin, Game game) {
+        if (game == null) {
+            System.out.println("Not Null");
+            return false;
+        }
+        for (int i = 0; i < this.games.size(); i++) {
+            if (this.games.get(i).equals(game)) {
+                this.games.remove(game);
+                System.out.println("Successfully Removed");
+                return true;  
+            }
+            
+            
+        }
+
+        System.out.println("Not found game to remove");
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
