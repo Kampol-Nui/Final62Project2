@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class CustomerAccount extends Account{
     private Cart cart;
     private double myMoney;
-    //private ArrayList<Cart> lb;
+    protected ArrayList<Game> myGameLibrary;
 
     public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
         this.cart = myCart;
         this.myMoney = myMoney;
-       //this.lb = lb;
+        this.myGameLibrary = new ArrayList<>();
     }
 
 //    public void setCart(Cart cart) {

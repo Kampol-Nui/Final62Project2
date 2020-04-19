@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author ADMIN
  */
 public class GameLibrary {
-    protected ArrayList<Game> myGameLibrary[];
+    protected ArrayList<Game> myGameLibrary;
     
 
 //    public void setLibrary(Cart cart){
@@ -22,10 +22,17 @@ public class GameLibrary {
 //    public void addToLibrary(Cart cart){
 //        this.myGameLibrary = cart.getItemInCart();
 //    }
+    public void payGame(CustomerAccount ac){
+        if(ac.getCart().getTotalprice() < ac.getMyMoney()){
+           ac.myGameLibrary = ac.getCart().itemInCart;
+            System.out.println(ac.myGameLibrary);
+        }
 
-    public ArrayList<Game>[] getMyGameLibrary() {
+
+
+}
+
+    public ArrayList<Game> getMyGameLibrary() {
         return myGameLibrary;
     }
-
-
 }
