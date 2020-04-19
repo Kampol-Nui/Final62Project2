@@ -19,7 +19,7 @@ public class Cart {
     private CustomerAccount customerAccount;
     private Payment paygame;
     //  private Game itemInCart[];
-    private ArrayList<Game> itemInCart;
+    protected ArrayList<Game> itemInCart;
 
 //    private double changemoney;
 
@@ -104,6 +104,14 @@ public class Cart {
 //        }
 //        
 //    }
+    
+    public void calculateTotalPrice(){
+        for (int i = 0; i < this.itemInCart.size(); i++) {
+            this.totalprice += this.itemInCart.get(i).getPrice();
+            
+        }
+        
+    }
     public CustomerAccount getCustomerAccount() {
         return customerAccount;
     }

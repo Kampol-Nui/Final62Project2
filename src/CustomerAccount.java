@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,13 +13,23 @@
  */
 public class CustomerAccount extends Account{
     private Cart cart;
-    protected double myMoney;
+    private double myMoney;
+    //private ArrayList<Cart> lb;
 
     public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
         super(username, password, status, person);
         this.cart = myCart;
         this.myMoney = myMoney;
+       //this.lb = lb;
     }
+
+//    public void setCart(Cart cart) {
+//        this.cart = cart;
+//    }
+//
+//    public void setLb(GameLibrary[] lb) {
+//        this.lb = lb;
+//    }
 
     
 //    public void customerAddGameToCart(String title){
@@ -35,6 +48,14 @@ public class CustomerAccount extends Account{
     public double getMyMoney() {
         return this.myMoney;
     }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+//    public ArrayList<Cart> getLb() {
+//        return lb;
+//    }
     
     public void TopupMoney(double topupmoney){
          this.myMoney = this.myMoney + topupmoney;

@@ -10,7 +10,7 @@
  */
 public class Payment{
     private CustomerAccount customermoney;
-    private GameStore itemInCart[];
+    private Cart itemInCart;
     
 //    public void payGame(Cart cart,GameLibrary library){
 //        if(cart.getCustomerAccount().getMyMoney() == cart.getTotalprice()){
@@ -30,4 +30,10 @@ public class Payment{
 //            System.out.println("You don't have enogh money");
 //        }
 //    }
+    
+    public void payGame(CustomerAccount ac){
+        if(ac.getCart().getTotalprice() < ac.getMyMoney()){
+           
+        }
+    }
 }

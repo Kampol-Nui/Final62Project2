@@ -21,6 +21,7 @@ public class Test {
         Game game1 = new Game("01","TOMB RIDER",20);
         Game game2 = new Game("02","RE7",60);
         Game game3 = new Game("03","RE8",90);
+        //GameLibrary lb1 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount(c1,500,"asdas","asdasd",AccountStatus.ACTIVE,person2);
         
         AdminAccount admin = new  AdminAccount("NobodyFound", "007", AccountStatus.ACTIVE, person,c1);

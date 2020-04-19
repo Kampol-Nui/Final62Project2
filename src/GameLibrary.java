@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +12,7 @@
  * @author ADMIN
  */
 public class GameLibrary {
-    private GameStore myGameLibrary[];
+    protected ArrayList<Game> myGameLibrary[];
     
 
 //    public void setLibrary(Cart cart){
@@ -19,6 +22,10 @@ public class GameLibrary {
 //    public void addToLibrary(Cart cart){
 //        this.myGameLibrary = cart.getItemInCart();
 //    }
+
+    public ArrayList<Game>[] getMyGameLibrary() {
+        return myGameLibrary;
+    }
 
 
 }
