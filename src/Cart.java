@@ -24,12 +24,12 @@ public class Cart {
 //    private double changemoney;
 
     public Cart() {
-        itemInCart = new ArrayList<>();
+        itemInCart = new ArrayList<Game>();
     }
     protected boolean addGameTOCart(String title) {
         for (int i = 0; i < GameStore.games.size(); i++) {
-            if (GameStore.games.listIterator(i).next().getTitle().equals(title)) {
-                this.itemInCart.add(GameStore.games.listIterator(i).next());
+            if (GameStore.games.get(i).getTitle().equals(title)) {
+                this.itemInCart.add(GameStore.games.get(i));
             }
         }
 
@@ -47,14 +47,20 @@ public class Cart {
 //            }
 //        }     
 //    }
-    protected boolean removeGameFromCart(GameStore allitemInStore, String title) {
-        for (int i = 0; i < allitemInStore.games.size(); i++) {
-            if (allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)) {
-                this.itemInCart.remove(allitemInStore.getGame(i));
-
+    protected boolean removeGameFromCart(String title) {
+//        for (int i = 0; i < GameStore.games.size(); i++) {
+//            
+//            
+//        }
+        //allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)
+        for (int i = 0; i < GameStore.games.size(); i++) {
+            if (GameStore.games.get(i).getTitle().equals(title)) {
+                this.itemInCart.remove(GameStore.games.get(i));
+                return true;
             }
 
         }
+        System.out.println("not found the game to remove");
         return false;
     }
 
@@ -98,15 +104,26 @@ public class Cart {
 //        }
 //        return false;
 //    }
-    public boolean listGameFromCart() {
+      public boolean listGameFromCart() {
         System.out.println("Your Cart Has ");
+        if(itemInCart.isEmpty()){
+               System.out.println("nothing");
+               return false;
+        }
         for (Game game : this.itemInCart) {
 
             System.out.print(game + "\t");
             System.out.println("Index is " + this.itemInCart.indexOf(game));
+            //System.out.println(this.itemInCart);
 
         }
-        return false;
+               
+        
+        return true;
+    }
+      
+          public void clearCart(){
+        this.itemInCart.clear();
     }
 
 }

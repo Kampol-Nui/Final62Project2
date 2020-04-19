@@ -21,7 +21,7 @@ public class GameStore {
     private GameStatus gamestatus;
 
     public GameStore() {
-        games = new ArrayList<>();
+        games = new ArrayList<Game>();
     }
 
     public boolean addGame(AdminAccount admin, Game game) {

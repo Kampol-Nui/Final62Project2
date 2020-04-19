@@ -16,9 +16,12 @@ public class AdminAccount extends Account{
     
     //private Game game;
    // private int count;
+    GameStore store;
+    Cart cart;
     
-    public AdminAccount(String username, String password, AccountStatus status, Person person) {
+    public AdminAccount(String username, String password, AccountStatus status, Person person,Cart cart) {
         super(username, password, status, person);
+        this.cart = cart;
         //ArrayList<AdminAccount> ad = new ArrayList<AdminAccount>();
         //game = new Game[10];
         
@@ -45,11 +48,15 @@ public class AdminAccount extends Account{
     public void addGame(GameStore store,AdminAccount admin,Game game) {       
          Objects.requireNonNull(game, "Game Can't be Null");
          store.addGame(admin,game);
+         //this.store.addGame(admin, game);
     }
 
     
-     public void removeGame(GameStore store,AdminAccount admin,Game game){
-         store.removeGame(admin, game);
+    public void removeGame(GameStore store,AdminAccount admin,Game game){
+       store.removeGame(admin, game);
+//         cart.clearCart();
+            //this.store.removeGame(admin, game);
+            this.cart.clearCart();
      }
     
     
