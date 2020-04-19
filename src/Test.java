@@ -53,7 +53,7 @@ public class Test {
 //        gameStore2.listGameFromStore();
 //        System.out.println("-----------------------------------------------------------------");
         System.out.println("=============================TEST FOR ADMIN========================================================");
-
+        System.out.println("                                                                                                   ");
         System.out.println("=============================TEST FOR CUSTOMER=====================================================");
         c1.addGameTOCart(gameStore, cus1, "");
         c1.listGameFromCart();
