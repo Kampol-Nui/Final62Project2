@@ -15,13 +15,20 @@ public class Game {
     private String id;
     private String title;
     private double price;
+    private GameStatus status;
 
     public Game(String id, String title, double price) {
         this.id = id;
         this.title = title;
         this.price = price;
+       
     }
 
+    public void setStatus(GameStatus status) {
+        this.status = status;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 3;
@@ -44,6 +51,10 @@ public class Game {
             return false;
         }
         return true;
+    }
+
+    public GameStatus getStatus() {
+        return status;
     }
 
     public double getPrice() {

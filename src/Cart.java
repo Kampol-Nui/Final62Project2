@@ -26,13 +26,15 @@ public class Cart {
     public Cart() {
         itemInCart = new ArrayList<Game>();
     }
-    protected boolean addGameTOCart(String title) {
+    protected boolean addGameTOCart(GameStore GameStore,CustomerAccount ca,String title) {
         for (int i = 0; i < GameStore.games.size(); i++) {
             if (GameStore.games.get(i).getTitle().equals(title)) {
                 this.itemInCart.add(GameStore.games.get(i));
+                
+                return true;
             }
         }
-
+        System.out.println("not found the game to add");
         return false;
     }
 
@@ -47,21 +49,33 @@ public class Cart {
 //            }
 //        }     
 //    }
-    protected boolean removeGameFromCart(String title) {
+    protected boolean removeGameFromCart(CustomerAccount ca,String title) {
 //        for (int i = 0; i < GameStore.games.size(); i++) {
 //            
 //            
 //        }
         //allitemInStore.getGame(i).getTitle() == null ? title == null : allitemInStore.getGame(i).getTitle().equals(title)
-        for (int i = 0; i < GameStore.games.size(); i++) {
-            if (GameStore.games.get(i).getTitle().equals(title)) {
-                this.itemInCart.remove(GameStore.games.get(i));
+        
+//        for (int i = 0; i < GameStore.games.size(); i++) {
+//            if (GameStore.games.get(i).getTitle().equals(title)) {
+//                this.itemInCart.remove(GameStore.games.get(i));
+//                return true;
+//            }
+//
+//        }
+       
+
+        for (int i = 0; i < this.itemInCart.size(); i++) {
+            if (this.itemInCart.get(i).getTitle().equals(title)) {
+               // this.itemInCart.remove(GameStore.games.get(i));
+                this.itemInCart.remove(this.itemInCart.get(i));
                 return true;
             }
 
         }
         System.out.println("not found the game to remove");
         return false;
+        
     }
 
 //    public void calculatetotalprice(Cart cart) {
@@ -122,8 +136,8 @@ public class Cart {
         return true;
     }
       
-          public void clearCart(){
-        this.itemInCart.clear();
-    }
+//          public void clearCart(){
+//        this.itemInCart.clear();
+//    }
 
 }

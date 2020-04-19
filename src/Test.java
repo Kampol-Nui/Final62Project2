@@ -31,19 +31,28 @@ public class Test {
 //        admin.addGame(game1);
           //admin.listGameFromStore();
         //ArrayList<AdminAccount> ad = new ArrayList<AdminAccount>();
-        
-        admin.addGame(admin,game1);
-        admin.addGame(admin,game2);
-        admin.addGame(admin,game3);
+          gameStore.addGame(admin, game1);
+          gameStore.addGame(admin, game2);
+          gameStore.addGame(admin, game3);
+          System.out.println(game1.getStatus());
+          gameStore.changeStatus(admin, "RE7", GameStatus.DISCOUNTED);
+          System.out.println(game2.getStatus());
+//        admin.addGame(admin,game1);
+//        admin.addGame(admin,game2);
+//        admin.addGame(admin,game3);
 //        cus1.customerAddGameToCart(c1, gameStore, "TOMB RIDER");
 //        cus1.customerAddGameToCart(c1, gameStore, "RE7");
-          cus1.customerAddGameToCart( "TOMB RIDER");
-          cus1.customerAddGameToCart( "RE7");
+            c1.addGameTOCart(gameStore,cus1, "TOMB RIDER");
+            c1.addGameTOCart(gameStore,cus1, "RE7");
+            c1.addGameTOCart(gameStore,cus1, "asdasd");
+//          cus1.customerAddGameToCart( "TOMB RIDER");
+//          cus1.customerAddGameToCart( "RE7");
         c1.listGameFromCart();
         System.out.println("-----------------");
-        //c1.removeGameFromCart("RE7");
-        cus1.customerRemoveGameFromCart("RE7");
-        cus1.customerRemoveGameFromCart("asds");
+        c1.removeGameFromCart(cus1,"RE7");
+        c1.removeGameFromCart(cus1,"asdasd");
+//        cus1.customerRemoveGameFromCart("RE7");
+//        cus1.customerRemoveGameFromCart("asds");
         c1.listGameFromCart();
         System.out.println("-----------------");
 //        c1.getItemInCart();
@@ -53,8 +62,8 @@ public class Test {
          //gameStore.addGame(admin, game3);
         gameStore.listGameFromStore();
         gameStore2.listGameFromStore();
-        admin.removeGame(admin, game2);
-        
+       // admin.removeGame(admin, game2);
+        gameStore.removeGame(admin, game2);
         
         System.out.println("-----------------");
         gameStore.listGameFromStore();
@@ -62,22 +71,24 @@ public class Test {
         
         
         System.out.println("-----------------");
-        admin.removeGame(admin, game1);
+//        admin.removeGame(admin, game1);
+          gameStore.removeGame(admin, game1);
         gameStore.listGameFromStore();
      
 
         
         
-//        System.out.println("-----------------");
-//        admin.removeGame(gameStore, admin, game3,c1);
-//        gameStore.listGameFromStore();
-//        
-//        System.out.println("-----------------");
-//        admin.removeGame(gameStore, admin, game3,c1);
-//        gameStore.listGameFromStore();
-//        
-//        c1.removeGameFromCart(gameStore,"TOMB RIDER");
-//        c1.listGameFromCart();
+        System.out.println("-----------------");
+        gameStore.removeGame(admin, game3);
+        gameStore.listGameFromStore();
+        
+        System.out.println("-----------------");
+        gameStore.removeGame(admin, game3);
+        gameStore.listGameFromStore();
+        
+        
+        c1.removeGameFromCart(cus1,"TOMB RIDER");
+        c1.listGameFromCart();
        
     }
 

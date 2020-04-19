@@ -19,14 +19,14 @@ public class CustomerAccount extends Account{
     }
 
     
-    public void customerAddGameToCart(String title){
-        cart.addGameTOCart(title);
-    }
-    
-    public void customerRemoveGameFromCart(String title){
-        cart.removeGameFromCart(title);
-        
-    }
+//    public void customerAddGameToCart(String title){
+//        cart.addGameTOCart(title);
+//    }
+//    
+//    public void customerRemoveGameFromCart(String title){
+//        cart.removeGameFromCart(title);
+//        
+//    }
     
 //    public void customerCheckOut(Cart cart,GameLibrary library){
 //        cart.checkoutGame(cart,library);
