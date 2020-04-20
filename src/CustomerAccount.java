@@ -34,15 +34,20 @@ public class CustomerAccount extends Account{
     }
 
     
-    public void addCustomerToServer(double myMoney, String username,String password,Cart cart){
+    public void addCustomerToServer(double myMoney, String username,String password){
+        
+       PreparedStatement pre = null;
         try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/finalproject", "Nui", "nui");
-             Statement st = con.createStatement();
+             //Statement st = con.createStatement();
+             
+                
+               
                )
-        { String sql = "INSERT INTO CUSTOMERACCOUNT " +
-					"(mymoney,name,password,cart)" + 
-					"VALUES (?,?,?,?) ";
-                PreparedStatement pre = null;
-                pre = con.prepareStatement(sql);
+        {   
+                String sql = "INSERT INTO CUSTOMERACCOUNT " +
+					"(mymoney,name,password)" + 
+					"VALUES (?,?,?) ";
+                 pre = con.prepareStatement(sql);  
                 pre.setDouble(1, myMoney);
                 pre.setString(2, username);
                 pre.setString(3, password);
@@ -56,7 +61,17 @@ public class CustomerAccount extends Account{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        try{
+            if(pre != null){
+                pre.close();
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }
+        
     }
+       
+    
 //    public void setCart(Cart cart) {
 //        this.cart = cart;
 //    }
