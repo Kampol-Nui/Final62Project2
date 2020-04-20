@@ -1,5 +1,14 @@
 
+
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +33,30 @@ public class CustomerAccount extends Account{
         this.myGameLibrary = new ArrayList<>();
     }
 
+    
+    public void addCustomerToServer(double myMoney, String username,String password,Cart cart){
+        try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/finalproject", "Nui", "nui");
+             Statement st = con.createStatement();
+               )
+        { String sql = "INSERT INTO CUSTOMERACCOUNT " +
+					"(mymoney,name,password,cart)" + 
+					"VALUES (?,?,?,?) ";
+                PreparedStatement pre = null;
+                pre = con.prepareStatement(sql);
+                pre.setDouble(1, myMoney);
+                pre.setString(2, username);
+                pre.setString(3, password);
+               // pre.setObject(4, cart);
+                pre.executeUpdate();
+                //int row1 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES('123123')");
+                 
+               // int row2 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES(500,'Kampol','456789fgh')");
+               // System.out.println(row1);
+                //System.out.println(row2);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 //    public void setCart(Cart cart) {
 //        this.cart = cart;
 //    }

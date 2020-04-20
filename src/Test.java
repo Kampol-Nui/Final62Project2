@@ -26,7 +26,7 @@ public class Test {
         CustomerAccount cus1 = new CustomerAccount(c1, 500, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
         AdminAccount admin2 = new AdminAccount("NobodyFound", "007", person);
-
+cus1.addCustomerToServer(500,"Nui","1231231",c1);
         System.out.println("=============================TEST FOR ADMIN========================================================");
 //        gameStore.listGameFromStore();
 //        System.out.println("-----------------------------------------------------------------");
@@ -69,6 +69,8 @@ public class Test {
         c1.removeGameFromCart(cus1, "RE7");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
+        
     }
 
+  
 }
