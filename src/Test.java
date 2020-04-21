@@ -26,11 +26,11 @@ public class Test {
         CustomerAccount cus1 = new CustomerAccount(c1, 500, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
         AdminAccount admin2 = new AdminAccount("NobodyFound", "007", person);
-cus1.addCustomerToServer(500,"Nui","1231231");
+
         System.out.println("=============================TEST FOR ADMIN========================================================");
 //        gameStore.listGameFromStore();
 //        System.out.println("-----------------------------------------------------------------");
-        gameStore.addGame(admin2, game1);
+        gameStore.addGame(admin, game1);
         gameStore.addGame(admin, game2);
         gameStore.addGame(admin, game3);
         gameStore.listGameFromStore();
@@ -55,7 +55,7 @@ cus1.addCustomerToServer(500,"Nui","1231231");
         System.out.println("=============================TEST FOR ADMIN========================================================");
         System.out.println("                                                                                                   ");
         System.out.println("=============================TEST FOR CUSTOMER=====================================================");
-        c1.addGameTOCart(gameStore, cus1, "");
+        c1.addGameTOCart(null, cus1, "TOMB RIDER");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
         c1.addGameTOCart(gameStore, cus1, "RE7");
@@ -63,13 +63,17 @@ cus1.addCustomerToServer(500,"Nui","1231231");
         c1.addGameTOCart(gameStore, cus1, "RE8");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        c1.removeGameFromCart(cus1, "RE7");
+        c1.removeGameFromCart(null, "RE7");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
         c1.removeGameFromCart(cus1, "RE7");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        
+        c1.calculateTotalPrice();
+        lb1.payGame(cus1);
+        System.out.println(c1.getTotalprice());
+        cus1.addCustomerToServer(500,"Nui","1231231",c1);
+        System.out.println(lb1.getMyGameLibrary(null));
     }
 
   

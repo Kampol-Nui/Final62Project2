@@ -3,6 +3,7 @@
 
 
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class CustomerAccount extends Account{
     }
 
     
-    public void addCustomerToServer(double myMoney, String username,String password){
+    public void addCustomerToServer(double myMoney, String username,String password,Cart cart){
         
        PreparedStatement pre = null;
         try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/finalproject", "Nui", "nui");
@@ -45,12 +46,14 @@ public class CustomerAccount extends Account{
                )
         {   
                 String sql = "INSERT INTO CUSTOMERACCOUNT " +
-					"(mymoney,name,password)" + 
-					"VALUES (?,?,?) ";
+					"(mymoney,name,password,carttotalprice)" + 
+					"VALUES (?,?,?,?) ";
                  pre = con.prepareStatement(sql);  
                 pre.setDouble(1, myMoney);
                 pre.setString(2, username);
                 pre.setString(3, password);
+                pre.setDouble(4, cart.getTotalprice());
+//                pre.setBlob(4, (Blob) cart);
                // pre.setObject(4, cart);
                 pre.executeUpdate();
                 //int row1 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES('123123')");
@@ -107,7 +110,11 @@ public class CustomerAccount extends Account{
 //    }
     
     public void TopupMoney(double topupmoney){
+        if(topupmoney == 0){
+            System.out.println("Please in sert your money");
+        }else{
          this.myMoney = this.myMoney + topupmoney;
+        }
     }
     
 //    public double calculateMyTotalMoney(){

@@ -51,8 +51,10 @@ public class GameStore {
     }
 
     public boolean addGame(AdminAccount admin, Game game) {
+        try{
+            Objects.requireNonNull(admin, "AdminAccount cannot be null");
         if (game == null) {
-            System.out.println("Not Null");
+            System.out.println("Game is Not Null");
             return false;
         }
         for (int i = 0; i < this.games.size(); i++) {
@@ -65,10 +67,18 @@ public class GameStore {
         this.games.add(game);
         System.out.println("Successfully Added");
         return true;
-
+        }catch(NullPointerException ex){
+              System.out.println(ex.getMessage());
+              
+        }
+        return false;
     }
 
     public boolean changeStatus(AdminAccount admin, String title, GameStatus status) {
+        try{
+             Objects.requireNonNull(admin, "AdminAccount cannot be null");
+             Objects.requireNonNull(title, "Title cannot be null");
+             Objects.requireNonNull(status, "Statys cannot be null");
         for (int i = 0; i < this.games.size(); i++) {
             if (this.games.get(i).getTitle().equals(title)) {
                 this.games.get(i).setStatus(status);
@@ -76,13 +86,19 @@ public class GameStore {
             }
 
         }
+        }catch(NullPointerException ex){
+            System.out.println(ex.getMessage());
+            return false;
+    }
         System.out.println("not found the game to add");
         return false;
     }
 
     public boolean removeGame(AdminAccount admin, Game game) {
+        try{
+            Objects.requireNonNull(admin, "AdminAccount cannot be null");
         if (game == null) {
-            System.out.println("Not Null");
+            System.out.println("Game is Not Null");
             return false;
         }
         for (int i = 0; i < this.games.size(); i++) {
@@ -94,7 +110,10 @@ public class GameStore {
             
             
         }
-
+        }catch(NullPointerException ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
         System.out.println("Not found game to remove");
         return false;
     }
