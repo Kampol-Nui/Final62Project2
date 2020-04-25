@@ -74,6 +74,7 @@ public class GameStore implements AdminService{
         return false;
     }
 
+    @Override
     public boolean changeStatus(AdminAccount admin, String title, GameStatus status) {
         try {
             for (int i = 0; i < this.games.size(); i++) {

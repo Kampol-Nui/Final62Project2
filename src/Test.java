@@ -70,11 +70,15 @@ public class Test {
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
         c1.calculateTotalPrice();
+        System.out.println("                                                                   ");
         lb1.payGame(cus1);
-        System.out.println(c1.getTotalprice());
-        System.out.println(cus1.getMyMoney());
-        c1.listGameFromCart();
-        lb1.getMyGameLibrary(cus1);
+//        System.out.println(c1.getTotalprice());
+//        System.out.println(cus1.getMyMoney());
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println(lb1.getMyGameLibrary(cus1));
+        
+        
+        
 //        c1.addGameToCart(gameStore, cus1, "TOMB RIDER");
 //        c1.listGameFromCart();
        // cus1.addCustomerToServer(500,"Nui","1231231",c1);

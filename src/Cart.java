@@ -75,6 +75,7 @@ public class Cart implements CustomerService {
         System.out.println("************************ Game in " + id + " *************************");
         if (itemInCart.isEmpty()) {
             System.out.println("nothing");
+            
             return false;
         }
         for (Game game : this.itemInCart) {
@@ -91,9 +92,9 @@ public class Cart implements CustomerService {
         
     }
 
-//          public void clearCart(){
-//        this.itemInCart.clear();
-//    }
+    public void removeallItemFromCart(CustomerAccount ac){
+        ac.getCart().itemInCart = null;
+    }
     @Override
     public String toString() {
         return " " + id;
@@ -146,4 +147,9 @@ public class Cart implements CustomerService {
         return false;
 
     }
+//    public void clearCart(CustomerAccount ac){
+//        for (int i = 0; i < ac.getCart().itemInCart.size(); i++) {
+//            itemInCart.set(i, null);
+//        }
+//    }
 }
