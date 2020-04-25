@@ -23,7 +23,7 @@ import java.sql.PreparedStatement;
  */
 public class CustomerAccount extends Account{
     private Cart cart;
-    private double myMoney;
+    protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
 
     
@@ -97,6 +97,8 @@ public class CustomerAccount extends Account{
 //        cart.checkoutGame(cart,library);
 //    }
 
+    
+    
     public double getMyMoney() {
         return this.myMoney;
     }

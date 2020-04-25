@@ -21,6 +21,7 @@ public class GameLibrary {
             Objects.requireNonNull(ac, "CustomerAccount cannot be null");
         if(ac.getCart().getTotalprice() < ac.getMyMoney()){
            ac.myGameLibrary = ac.getCart().itemInCart;
+           ac.myMoney = ac.myMoney - ac.getCart().getTotalprice();
             System.out.println(ac.myGameLibrary);
         }
         }catch(NullPointerException ex){

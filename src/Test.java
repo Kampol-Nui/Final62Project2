@@ -72,6 +72,7 @@ public class Test {
         c1.calculateTotalPrice();
         lb1.payGame(cus1);
         System.out.println(c1.getTotalprice());
+        System.out.println(cus1.getMyMoney());
         cus1.addCustomerToServer(500,"Nui","1231231",c1);
         System.out.println(lb1.getMyGameLibrary(null));
     }
