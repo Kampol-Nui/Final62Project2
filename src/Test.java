@@ -23,7 +23,7 @@ public class Test {
         Game game3 = new Game("03", "RE8", 90);
         Game game4 = new Game("04", "RE9", 40);
         GameLibrary lb1 = new GameLibrary();
-        CustomerAccount cus1 = new CustomerAccount(c1, 500, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
+        CustomerAccount cus1 = new CustomerAccount(c1, 800, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
         AdminAccount admin2 = new AdminAccount("NobodyFound", "007", person);
 
@@ -76,7 +76,7 @@ public class Test {
 //        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
         System.out.println(lb1.getMyGameLibrary(cus1));
-        
+        lb1.SelectTest();
         
         
 //        c1.addGameToCart(gameStore, cus1, "TOMB RIDER");
