@@ -71,6 +71,7 @@ public class Cart implements CustomerService {
 //        return false;
 //    }
     public boolean listGameFromCart() {
+//        try{
         System.out.println("************************ Game in " + id + " *************************");
         if (itemInCart.isEmpty()) {
             System.out.println("nothing");
@@ -81,10 +82,13 @@ public class Cart implements CustomerService {
             System.out.print(game + "\t");
             System.out.println("Index is " + this.itemInCart.indexOf(game));
             //System.out.println(this.itemInCart);
-
+            //return true;
         }
-
+//        }catch(NullPointerException ex){
+//            System.out.println("This cart have nothing");
+//        }
         return true;
+        
     }
 
 //          public void clearCart(){

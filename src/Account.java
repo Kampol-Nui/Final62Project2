@@ -51,6 +51,16 @@ public abstract class Account {
         }
         return true;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    
     
     
 }

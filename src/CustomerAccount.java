@@ -27,39 +27,39 @@ public class CustomerAccount extends Account {
         this.myGameLibrary = new ArrayList<>();
     }
 
-    public void addCustomerToServer(double myMoney, String username, String password, Cart cart) {
-
-        PreparedStatement pre = null;
-        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/finalproject", "Nui", "nui"); //Statement st = con.createStatement();
-                ) {
-            String sql = "INSERT INTO CUSTOMERACCOUNT "
-                    + "(mymoney,name,password,carttotalprice)"
-                    + "VALUES (?,?,?,?) ";
-            pre = con.prepareStatement(sql);
-            pre.setDouble(1, myMoney);
-            pre.setString(2, username);
-            pre.setString(3, password);
-            pre.setDouble(4, cart.getTotalprice());
-//                pre.setBlob(4, (Blob) cart);
-            // pre.setObject(4, cart);
-            pre.executeUpdate();
-            //int row1 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES('123123')");
-
-            // int row2 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES(500,'Kampol','456789fgh')");
-            // System.out.println(row1);
-            //System.out.println(row2);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        try {
-            if (pre != null) {
-                pre.close();
-            }
-        } catch (SQLException ex) {
-            ex.getMessage();
-        }
-
-    }
+//    public void addCustomerToServer(double myMoney, String username, String password, Cart cart) {
+//
+//        PreparedStatement pre = null;
+//        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/finalproject", "Nui", "nui"); //Statement st = con.createStatement();
+//                ) {
+//            String sql = "INSERT INTO CUSTOMERACCOUNT "
+//                    + "(mymoney,name,password,carttotalprice)"
+//                    + "VALUES (?,?,?,?) ";
+//            pre = con.prepareStatement(sql);
+//            pre.setDouble(1, myMoney);
+//            pre.setString(2, username);
+//            pre.setString(3, password);
+//            pre.setDouble(4, cart.getTotalprice());
+////                pre.setBlob(4, (Blob) cart);
+//            // pre.setObject(4, cart);
+//            pre.executeUpdate();
+//            //int row1 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES('123123')");
+//
+//            // int row2 = st.executeUpdate("INSERT INTO CUSTOMERACCOUNT VALUES(500,'Kampol','456789fgh')");
+//            // System.out.println(row1);
+//            //System.out.println(row2);
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        try {
+//            if (pre != null) {
+//                pre.close();
+//            }
+//        } catch (SQLException ex) {
+//            ex.getMessage();
+//        }
+//
+//    }
 
 //    public void setCart(Cart cart) {
 //        this.cart = cart;
