@@ -37,9 +37,9 @@ public class GameLibrary {
                 }catch (SQLException ex) {
                     ex.getMessage();
                 }
-                
+                ac.getCart().itemInCart.clear();
                 System.out.println(ac.myGameLibrary);
-                 //ac.getCart().itemInCart.removeAll(this.myGameLibrary) ;
+                 //ac.getCart().itemInCart.removeAll(ac.getCart().itemInCart) ;
             }
             }catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
