@@ -55,12 +55,12 @@ public class Test {
         System.out.println("=============================TEST FOR ADMIN========================================================");
         System.out.println("                                                                                                   ");
         System.out.println("=============================TEST FOR CUSTOMER=====================================================");
-        c1.addGameTOCart(null, cus1, "TOMB RIDER");
+        c1.addGameToCart(null, null, null);
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        c1.addGameTOCart(gameStore, cus1, "RE7");
-        c1.addGameTOCart(gameStore, cus1, "RE8");
-        c1.addGameTOCart(gameStore, cus1, "RE8");
+        c1.addGameToCart(gameStore, cus1, "RE7");
+        c1.addGameToCart(gameStore, cus1, "RE8");
+        c1.addGameToCart(gameStore, cus1, "RE8");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
         c1.removeGameFromCart(null, "RE7");

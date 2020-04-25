@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +10,7 @@ import java.util.Objects;
  *
  * @author MINI
  */
-public class Cart {
+public class Cart implements CustomerService {
 //    private GameStore itemInStore; 
     // private int count;
 
@@ -25,60 +24,6 @@ public class Cart {
     public Cart(String id) {
         this.id = id;
         itemInCart = new ArrayList<>();
-    }
-
-    protected boolean addGameTOCart(GameStore gameStore, CustomerAccount ca, String title) {
-      try{
-            
-        
-        Objects.requireNonNull(ca, "CustomerAccount cannot be null");
-        Objects.requireNonNull(gameStore, "GameStore cannot be null");
-        Objects.requireNonNull(title, "Title cannot be null");
-        for (int i = 0; i < gameStore.games.size(); i++) {
-            if (gameStore.games.get(i).getTitle().equals(title)) {
-                this.itemInCart.add(gameStore.games.get(i));
-                System.out.println("Successfully Added");
-                return true;
-            }        
-        for (int j = 0; j < itemInCart.size(); j++) {
-            if (itemInCart.get(j).getTitle().equals(title)) {
-                System.out.println("You already have this game in cart");
-                return false;
-            }
-        }
-            
-        }
-        } catch (NullPointerException ex) {
-            System.out.println(ex.getMessage());
-            return false;
-            
-        }
-
-        System.out.println("not found the game to add");
-        return false;
-    }
-
-    protected boolean removeGameFromCart(CustomerAccount ca, String title) {
-        try{
-        Objects.requireNonNull(ca, "CustomerAccount cannot be null");
-        Objects.requireNonNull(title, "Title cannot be null");
-        
-        for (int i = 0; i < this.itemInCart.size(); i++) {
-            if (this.itemInCart.get(i).getTitle().equals(title)) {
-                // this.itemInCart.remove(GameStore.games.get(i));
-                this.itemInCart.remove(this.itemInCart.get(i));
-                System.out.println("Successfully Removed");
-                return true;
-            }
-
-        }
-        }catch(NullPointerException ex){
-            System.out.println( ex.getMessage());
-            return false;
-        }
-        System.out.println("not found the game to remove");
-        return false;
-
     }
 
 //    public void calculatetotalprice(Cart cart) {
@@ -150,4 +95,51 @@ public class Cart {
         return " " + id;
     }
 
+    @Override
+    public boolean addGameToCart(GameStore gameStore, CustomerAccount ca, String title) {
+        try {
+            for (int i = 0; i < gameStore.games.size(); i++) {
+                if (gameStore.games.get(i).getTitle().equals(title)) {
+                    this.itemInCart.add(gameStore.games.get(i));
+                    System.out.println("Successfully Added");
+                    return true;
+                }
+                for (int j = 0; j < itemInCart.size(); j++) {
+                    if (itemInCart.get(j).getTitle().equals(title)) {
+                        System.out.println("You already have this game in cart");
+                        return false;
+                    }
+                }
+
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("NullPointerException Caught");
+            return false;
+
+        }
+
+        System.out.println("not found the game to add");
+        return false;
+    }
+
+    @Override
+    public boolean removeGameFromCart(CustomerAccount ca, String title) {
+        try {
+            for (int i = 0; i < this.itemInCart.size(); i++) {
+                if (this.itemInCart.get(i).getTitle().equals(title)) {
+                    // this.itemInCart.remove(GameStore.games.get(i));
+                    this.itemInCart.remove(this.itemInCart.get(i));
+                    System.out.println("Successfully Removed");
+                    return true;
+                }
+
+            }
+        } catch (NullPointerException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+        System.out.println("not found the game to remove");
+        return false;
+
+    }
 }

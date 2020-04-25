@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author MINI
  */
-public class GameStore {
+public class GameStore implements AdminService{
 
     //private Game itemInStore[];
     protected ArrayList<Game> games;
@@ -51,66 +51,62 @@ public class GameStore {
     }
 
     public boolean addGame(AdminAccount admin, Game game) {
-        try{
+        try {
             Objects.requireNonNull(admin, "AdminAccount cannot be null");
-        if (game == null) {
-            System.out.println("Game is Not Null");
-            return false;
-        }
-        for (int i = 0; i < this.games.size(); i++) {
-            if (this.games.get(i).equals(game)) {
-                System.out.println("You already have this game");
+            if (game == null) {
+                System.out.println("Game is Not Null");
                 return false;
             }
-        }
-        game.setStatus(GameStatus.ONSALED);
-        this.games.add(game);
-        System.out.println("Successfully Added");
-        return true;
-        }catch(NullPointerException ex){
-              System.out.println(ex.getMessage());
-              
+            for (int i = 0; i < this.games.size(); i++) {
+                if (this.games.get(i).equals(game)) {
+                    System.out.println("You already have this game");
+                    return false;
+                }
+            }
+            game.setStatus(GameStatus.ONSALED);
+            this.games.add(game);
+            System.out.println("Successfully Added");
+            return true;
+        } catch (NullPointerException ex) {
+            System.out.println(ex.getMessage());
+
         }
         return false;
     }
 
     public boolean changeStatus(AdminAccount admin, String title, GameStatus status) {
-        try{
-             Objects.requireNonNull(admin, "AdminAccount cannot be null");
-             Objects.requireNonNull(title, "Title cannot be null");
-             Objects.requireNonNull(status, "Statys cannot be null");
-        for (int i = 0; i < this.games.size(); i++) {
-            if (this.games.get(i).getTitle().equals(title)) {
-                this.games.get(i).setStatus(status);
-                return true;
-            }
+        try {
+            for (int i = 0; i < this.games.size(); i++) {
+                if (this.games.get(i).getTitle().equals(title)) {
+                    this.games.get(i).setStatus(status);
+                    return true;
+                }
 
-        }
-        }catch(NullPointerException ex){
+            }
+        } catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
             return false;
-    }
+        }
         System.out.println("not found the game to add");
         return false;
     }
 
     public boolean removeGame(AdminAccount admin, Game game) {
-        try{
+        try {
             Objects.requireNonNull(admin, "AdminAccount cannot be null");
-        if (game == null) {
-            System.out.println("Game is Not Null");
-            return false;
-        }
-        for (int i = 0; i < this.games.size(); i++) {
-            if (this.games.get(i).equals(game)) {
-                this.games.remove(game);
-                System.out.println("Successfully Removed");
-                return true;  
+            if (game == null) {
+                System.out.println("Game is Not Null");
+                return false;
             }
-            
-            
-        }
-        }catch(NullPointerException ex){
+            for (int i = 0; i < this.games.size(); i++) {
+                if (this.games.get(i).equals(game)) {
+                    this.games.remove(game);
+                    System.out.println("Successfully Removed");
+                    return true;
+                }
+
+            }
+        } catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
             return false;
         }
