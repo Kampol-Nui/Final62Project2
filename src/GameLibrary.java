@@ -50,7 +50,9 @@ public class GameLibrary {
                 ac.getCart().itemInCart.clear();
                 ac.getCart().listGameFromCart();
                 //ac.getCart().itemInCart.removeAll(ac.getCart().itemInCart) ;
-            }
+            }else {
+            System.out.println("Please Topup Money First");
+        }
         } catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
         } catch (SQLException ex) {

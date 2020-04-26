@@ -51,12 +51,12 @@ public class DBconnection {
          rs = stm.executeQuery(query3);
          
          if (rs.next()) {
-            String ps = rs.getString("PASSWORD");
-             System.out.println(ps);
+            //String ps = rs.getString("PASSWORD");
+             //System.out.println(ps);
             //if(ps==password){
             money = rs.getDouble("MYMONEY");
             //String lname = rs.getString("LastName");
-            System.out.println("" + money);
+            //System.out.println("" + money);
             }
             //System.out.println("LastName:" + lname);
          //}
