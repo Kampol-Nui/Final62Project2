@@ -70,37 +70,5 @@ public class GameLibrary {
     }
 
     
-    public void SelectTest(){
-        //double c1[] = new double[100];
-        try(Connection con = DBconnection.getConnecting();
-             Statement stm = con.createStatement();){
-            ResultSet rs = null;
-            //double d = rs.getDouble("MYMONEY");
-            String query = ("SELECT * FROM PASSWORD P");
-         rs = stm.executeQuery(query);
-         if (rs.next()) {
-            double money = rs.getDouble("MYMONEY");
-            //String lname = rs.getString("LastName");
-            System.out.println("" + money);
-            //System.out.println("LastName:" + lname);
-         }
-//            System.out.println(d);
-//            System.out.println(rs.getDouble("MYMONEY"));
-//            int i=0;
-//            while(rs.next()){
-////                System.out.print(rs.getInt("Id")+"\t");
-////               System.out.println(rs.getString("Name"));
-//                   
-//                  c1[i++] = rs.getDouble("MYMONEY");
-//                
-//            }
-//            for (int j = 0; j < c1.length; j++) {
-//            System.out.println(c1[j]);
-            
-//        }
-            
-        } catch (SQLException ex) {
-           ex.getMessage();
-        }
-    }
+    
 }

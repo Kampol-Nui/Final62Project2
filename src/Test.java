@@ -76,7 +76,7 @@ public class Test {
 //        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
         System.out.println(lb1.getMyGameLibrary(cus1));
-        lb1.SelectTest();
+        dataaccess.DBconnection.SelectLastMoney("asdasd");
         
         
 //        c1.addGameToCart(gameStore, cus1, "TOMB RIDER");

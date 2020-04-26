@@ -1,9 +1,12 @@
 
+import dataaccess.DBconnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,6 +28,27 @@ public class CustomerAccount extends Account {
         this.cart = myCart;
         this.myMoney = myMoney;
         this.myGameLibrary = new ArrayList<>();
+        String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?)";
+        String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
+        try(Connection con = DBconnection.getConnecting();) {
+            try (
+                        PreparedStatement stm = con.prepareStatement(sql1);
+                        PreparedStatement stm2 = con.prepareStatement(sql2);) {
+                    //stm.setInt(1, 1);
+                    stm2.setDouble(2, this.getMyMoney());
+                    stm2.setString(1, this.getPassword());
+                    stm.setString(1, this.getUsername());
+                    stm.setDouble(4, this.getMyMoney());
+                    stm.setString(2, this.getPassword());
+                    stm.setDouble(3, this.cart.getTotalprice());
+                    stm.executeUpdate();
+                    stm2.executeUpdate();
+                } catch (SQLException ex) {
+                    ex.getMessage();
+                }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
     }
 
 //    public void addCustomerToServer(double myMoney, String username, String password, Cart cart) {
