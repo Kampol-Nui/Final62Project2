@@ -24,6 +24,7 @@ public class Test {
         Game game4 = new Game("04", "RE9", 40);
         GameLibrary lb1 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount(c1, 800, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
+        cus1.TopupMoney(800);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
         AdminAccount admin2 = new AdminAccount("NobodyFound", "007", person);
 

@@ -46,8 +46,9 @@ public class DBconnection {
             ResultSet rs = null;
             //double d = rs.getDouble("MYMONEY");
             String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 C WHERE PASSWORD = '"+password+"'");
-            String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2)"+"AND P.PASSWORD = '"+password+"'");
-         rs = stm.executeQuery(query);
+            String query3 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2) AND PASSWORD = '"+password+"'");
+            String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+password+"'");
+         rs = stm.executeQuery(query3);
          
          if (rs.next()) {
             String ps = rs.getString("PASSWORD");
@@ -56,9 +57,9 @@ public class DBconnection {
             money = rs.getDouble("MYMONEY");
             //String lname = rs.getString("LastName");
             System.out.println("" + money);
-           // }
+            }
             //System.out.println("LastName:" + lname);
-         }
+         //}
 //            System.out.println(d);
 //            System.out.println(rs.getDouble("MYMONEY"));
 //            int i=0;

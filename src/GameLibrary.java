@@ -27,9 +27,9 @@ public class GameLibrary {
         String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
         try(Connection con = DBconnection.getConnecting();) {
 
-            if (ac.getCart().getTotalprice() < ac.getMyMoney()) {
+            if (ac.getCart().getTotalprice() < dataaccess.DBconnection.SelectLastMoney(ac.getPassword())) {
                 ac.myGameLibrary = (ArrayList<Game>)ac.getCart().itemInCart.clone();
-                ac.myMoney = ac.myMoney - ac.getCart().getTotalprice();
+                ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getPassword()) - ac.getCart().getTotalprice();
                 try (
                         PreparedStatement stm = con.prepareStatement(sql1);
                         PreparedStatement stm2 = con.prepareStatement(sql2);) {
@@ -37,11 +37,12 @@ public class GameLibrary {
                     stm2.setDouble(2, ac.getMyMoney());
                     stm2.setString(1, ac.getPassword());
                     stm.setString(1, ac.getUsername());
-                    stm.setDouble(4, ac.getMyMoney());
+                    stm.setDouble(4, ac.myMoney);
                     stm.setString(2, ac.getPassword());
                     stm.setDouble(3, ac.getCart().getTotalprice());
                     stm.executeUpdate();
                     stm2.executeUpdate();
+                    
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }
