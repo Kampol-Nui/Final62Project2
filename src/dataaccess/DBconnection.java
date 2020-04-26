@@ -45,17 +45,18 @@ public class DBconnection {
              Statement stm = con.createStatement();){
             ResultSet rs = null;
             //double d = rs.getDouble("MYMONEY");
-            String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2)");
+            String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 C WHERE PASSWORD = '"+password+"'");
+            String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2)"+"AND P.PASSWORD = '"+password+"'");
          rs = stm.executeQuery(query);
          
          if (rs.next()) {
             String ps = rs.getString("PASSWORD");
              System.out.println(ps);
-            if(ps==password){
+            //if(ps==password){
             money = rs.getDouble("MYMONEY");
             //String lname = rs.getString("LastName");
             System.out.println("" + money);
-            }
+           // }
             //System.out.println("LastName:" + lname);
          }
 //            System.out.println(d);
