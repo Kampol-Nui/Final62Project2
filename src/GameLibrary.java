@@ -27,7 +27,7 @@ public class GameLibrary {
         String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
         try(Connection con = DBconnection.getConnecting();) {
 
-            if (ac.getCart().getTotalprice() < dataaccess.DBconnection.SelectLastMoney(ac.getPassword())) {
+            if (ac.getCart().getTotalprice() <= dataaccess.DBconnection.SelectLastMoney(ac.getPassword())) {
                 ac.myGameLibrary = (ArrayList<Game>)ac.getCart().itemInCart.clone();
                 ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getPassword()) - ac.getCart().getTotalprice();
                 try (

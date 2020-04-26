@@ -20,7 +20,7 @@ public class Test {
         Cart c1 = new Cart("CART 1");
         Game game1 = new Game("01", "TOMB RIDER", 20);
         Game game2 = new Game("02", "RE7", 60);
-        Game game3 = new Game("03", "RE8", 90);
+        Game game3 = new Game("03", "RE8", 100);
         Game game4 = new Game("04", "RE9", 40);
         GameLibrary lb1 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount(c1, 800, "asdas", "asdasd", AccountStatus.ACTIVE, person2);

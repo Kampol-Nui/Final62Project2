@@ -26,7 +26,11 @@ public class CustomerAccount extends Account {
     public CustomerAccount(Cart myCart, double myMoney, String username, String password, AccountStatus status, Person person) {
         super(username, password, person);
         this.cart = myCart;
-        this.myMoney = myMoney;
+        if(dataaccess.DBconnection.SelectLastMoney(password)!=0){
+        this.myMoney = dataaccess.DBconnection.SelectLastMoney(password) ;
+        }else{
+        
+            TopupMoney(myMoney);}
         this.myGameLibrary = new ArrayList<>();
 //        String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?)";
 //        String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
@@ -118,7 +122,33 @@ public class CustomerAccount extends Account {
       
         if (topupmoney == 0) {
             System.out.println("Please in sert your money");
-        } else {
+        
+//        } else if(dataaccess.DBconnection.SelectLastMoney(getPassword())!=0){
+//        this.myMoney = topupmoney+dataaccess.DBconnection.SelectLastMoney(getPassword());
+//         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?)";
+//        String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
+//            try(Connection con = DBconnection.getConnecting();) {
+//            try (
+//                        PreparedStatement stm = con.prepareStatement(sql1);
+//                        PreparedStatement stm2 = con.prepareStatement(sql2);) {
+//                    //stm.setInt(1, 1);
+//                    stm2.setDouble(2, this.myMoney);
+//                    stm2.setString(1, this.getPassword());
+//                    stm.setString(1, this.getUsername());
+//                    stm.setDouble(4, this.myMoney);
+//                    stm.setString(2, this.getPassword());
+//                    stm.setDouble(3, this.cart.getTotalprice());
+//                    stm.executeUpdate();
+//                    stm2.executeUpdate();
+//                } catch (SQLException ex) {
+//                    ex.getMessage();
+//                }
+//        } catch (SQLException ex) {
+//            ex.getMessage();
+//        }
+          }else if(dataaccess.DBconnection.SelectLastMoney(this.getPassword()) == 0){
+            
+            
             String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?)";
         String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
             try(Connection con = DBconnection.getConnecting();) {
@@ -140,7 +170,7 @@ public class CustomerAccount extends Account {
         } catch (SQLException ex) {
             ex.getMessage();
         }
-            this.myMoney = this.myMoney + topupmoney;
+            this.myMoney =  topupmoney;
         }
     }
 
