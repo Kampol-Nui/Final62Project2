@@ -45,7 +45,7 @@ public class DBconnection {
              Statement stm = con.createStatement();){
             ResultSet rs = null;
 
-            String query = ("SELECT * FROM CUSTOMERACCOUNT WHERE ORDER_NUMBER=(SELECT MAX(ORDER_NUMBER) FROM CUSTOMERACCOUNT) and id="+ id);
+            String query = ("SELECT * FROM CUSTOMERACCOUNT C1 WHERE C1.ORDER_NUMBER=(SELECT MAX(ORDER_NUMBER) FROM CUSTOMERACCOUNT C2 WHERE C1.ID = C2.ID) AND id="+ id);
             //String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+id+"'");
          rs = stm.executeQuery(query);
          
