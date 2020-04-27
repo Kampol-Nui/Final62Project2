@@ -44,11 +44,10 @@ public class DBconnection {
         try(Connection con = DBconnection.getConnecting();
              Statement stm = con.createStatement();){
             ResultSet rs = null;
-            //double d = rs.getDouble("MYMONEY");
-            //String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE PASSWORD = '"+id+"'");
-            String query3 = ("SELECT * FROM CUSTOMERACCOUNT WHERE ID ="+id+" AND ORDER_NUMBER=(SELECT MAX(ORDER_NUMBER) FROM CUSTOMERACCOUNT)");
+
+            String query = ("SELECT * FROM CUSTOMERACCOUNT WHERE ORDER_NUMBER=(SELECT MAX(ORDER_NUMBER) FROM CUSTOMERACCOUNT) and id="+ id);
             //String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+id+"'");
-         rs = stm.executeQuery(query3);
+         rs = stm.executeQuery(query);
          
          if (rs.next()) {
             //String ps = rs.getString("PASSWORD");
@@ -76,7 +75,7 @@ public class DBconnection {
 //        }
             
         } catch (SQLException ex) {
-           ex.getMessage();
+            System.out.println(ex.getMessage());
         }
         return money;
     }

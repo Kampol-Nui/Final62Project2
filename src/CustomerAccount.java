@@ -109,7 +109,7 @@ public class CustomerAccount extends Account {
 //        cart.checkoutGame(cart,library);
 //    }
     public double getMyMoney() {
-        return this.myMoney;
+        return this.myMoney = dataaccess.DBconnection.SelectLastMoney(getUniqueId());
     }
 
     public Cart getCart() {
@@ -121,8 +121,8 @@ public class CustomerAccount extends Account {
 //    }
     public void TopupMoney(double topupmoney) {
       
-        if (topupmoney == 0) {
-            System.out.println("Please in sert your money");
+        if (topupmoney <= 0) {
+            System.out.println("Please insert your money");
         
         } else {
         this.myMoney = topupmoney+dataaccess.DBconnection.SelectLastMoney(getUniqueId());

@@ -28,7 +28,7 @@ public class Test {
         GameLibrary lb2 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount(c1, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
         CustomerAccount cus2 = new CustomerAccount(c2, "customer2", "testpass", AccountStatus.ACTIVE, person3);
-        cus1.TopupMoney(800);
+//        cus1.TopupMoney(800);
         //cus2.TopupMoney(1000);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
         AdminAccount admin2 = new AdminAccount("NobodyFound", "007", person);
@@ -64,38 +64,50 @@ public class Test {
         c1.addGameToCart(null, null, null);
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        c1.addGameToCart(gameStore, cus1, "RE7");
-        //c2.addGameToCart(gameStore, cus2, "RE7");
         c1.addGameToCart(gameStore, cus1, "RE8");
-        c1.addGameToCart(gameStore, cus1, "RE8");
+        c2.addGameToCart(gameStore, cus2, "RE7");
+        c2.addGameToCart(gameStore, cus2, "RE8");
+//        c1.addGameToCart(gameStore, cus1, "RE8");
         c1.listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        c1.removeGameFromCart(null, "RE7");
-        c1.listGameFromCart();
-        System.out.println("-----------------------------------------------------------------");
-        c1.removeGameFromCart(cus1, "RE7");
-        c1.listGameFromCart();
-        System.out.println("-----------------------------------------------------------------");
+//        c1.removeGameFromCart(null, "RE7");
+//        c1.listGameFromCart();
+//        System.out.println("-----------------------------------------------------------------");
+//        c1.removeGameFromCart(cus1, "RE7");
+//        c1.listGameFromCart();
+//        System.out.println("-----------------------------------------------------------------");
+//        System.out.println("                                                                   ");
+        System.out.println(cus1.getMyMoney());
+        cus1.TopupMoney(300);
+        System.out.println(cus1.getMyMoney());
         c1.calculateTotalPrice();
-        System.out.println("                                                                   ");
         lb1.payGame(cus1);
+        System.out.println(cus1.getMyMoney());
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println(cus2.getMyMoney());
+        cus2.TopupMoney(1000);
+        System.out.println(cus2.getMyMoney());
+        c2.calculateTotalPrice();
+        lb2.payGame(cus2);
+        System.out.println(cus2.getMyMoney());
+        System.out.println("-----------------------------------------------------------------");
+        
         //lb2.payGame(cus2);
 //        System.out.println(c1.getTotalprice());
 //        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
-        System.out.println(lb1.getMyGameLibrary(cus1));
+        System.out.println(lb2.getMyGameLibrary(cus1));
         //System.out.println(lb1.getMyGameLibrary(cus2));
         //dataaccess.DBconnection.SelectLastMoney(cus1.getUniqueId());
-        
-        cus2.TopupMoney(1000);
-        c2.addGameToCart(gameStore, cus1, "RE7");
-        lb2.payGame(cus2);
-        System.out.println(lb1.getMyGameLibrary(cus2));
+
+//        cus2.TopupMoney(1000);
+//        c2.addGameToCart(gameStore, cus1, "RE7");
+//        lb2.payGame(cus2);
+//        System.out.println(lb1.getMyGameLibrary(cus2));
 //        c1.addGameToCart(gameStore, cus1, "TOMB RIDER");
 //        c1.listGameFromCart();
-       // cus1.addCustomerToServer(500,"Nui","1231231",c1);
-       // System.out.println(lb1.getMyGameLibrary(null));
+        // cus1.addCustomerToServer(500,"Nui","1231231",c1);
+        // System.out.println(lb1.getMyGameLibrary(null));
     }
 
-  
 }

@@ -21,18 +21,16 @@ import java.util.logging.Logger;
  */
 public class GameLibrary {
 
-
     public void payGame(CustomerAccount ac) {
         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?,?)";
         //String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
-        try(Connection con = DBconnection.getConnecting();) {
+        try (Connection con = DBconnection.getConnecting();) {
 
             if (ac.getCart().getTotalprice() <= dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId())) {
-                ac.myGameLibrary = (ArrayList<Game>)ac.getCart().itemInCart.clone();
+                ac.myGameLibrary = (ArrayList<Game>) ac.getCart().itemInCart.clone();
                 ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId()) - ac.getCart().getTotalprice();
                 try (
-                        PreparedStatement stm = con.prepareStatement(sql1);
-                        //PreparedStatement stm2 = con.prepareStatement(sql2);
+                        PreparedStatement stm = con.prepareStatement(sql1); //PreparedStatement stm2 = con.prepareStatement(sql2);
                         ) {
                     //stm.setInt(1, 1);
 //                    stm2.setDouble(2, ac.getMyMoney());
@@ -43,18 +41,19 @@ public class GameLibrary {
                     stm.setString(3, ac.getPassword());
                     stm.setDouble(4, ac.getCart().getTotalprice());
                     stm.executeUpdate();
-                   // stm2.executeUpdate();
-                    
+                    // stm2.executeUpdate();
+
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }
-                ac.getCart().listGameFromCart();
+
                 ac.getCart().itemInCart.clear();
-                ac.getCart().listGameFromCart();
+
                 //ac.getCart().itemInCart.removeAll(ac.getCart().itemInCart) ;
-            }else {
-            System.out.println("Please Topup Money First");
-        }
+            } else {
+
+                System.out.println("Please Topup Money First");
+            }
         } catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
         } catch (SQLException ex) {
@@ -74,6 +73,4 @@ public class GameLibrary {
 
     }
 
-    
-    
 }
