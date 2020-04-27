@@ -2,22 +2,11 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author MINI
- */
+
 public class GameStore implements AdminService{
 
-    //private Game itemInStore[];
-    protected ArrayList<Game> games;
-    // private Game game;
 
-//    private int count;
+    protected ArrayList<Game> games;
     private GameStatus gamestatus;
     private String name;
 
@@ -50,6 +39,7 @@ public class GameStore implements AdminService{
         return games;
     }
 
+    @Override
     public boolean addGame(AdminAccount admin, Game game) {
         try {
             Objects.requireNonNull(admin, "AdminAccount cannot be null");
@@ -92,6 +82,7 @@ public class GameStore implements AdminService{
         return false;
     }
 
+    @Override
     public boolean removeGame(AdminAccount admin, Game game) {
         try {
             Objects.requireNonNull(admin, "AdminAccount cannot be null");

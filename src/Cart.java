@@ -1,57 +1,22 @@
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author MINI
- */
+
 public class Cart implements CustomerService {
-//    private GameStore itemInStore; 
-    // private int count;
 
     private String id;
     private double totalprice;
-
-    //  private Game itemInCart[];
     protected ArrayList<Game> itemInCart;
-
-//    private double changemoney;
     public Cart(String id) {
         this.id = id;
         itemInCart = new ArrayList<>();
     }
 
-//    public void calculatetotalprice(Cart cart) {
-//        for (int i = 0; i < count; i++) {           
-//            this.totalprice = this.totalprice+this.itemInCart[i].getGame(i).getPrice();
-//         }       
-//    }
-//    public void checkoutGame(Cart cart,GameLibrary library) {
-//        paygame.payGame(cart,library);
-//        
-//    }
     public double getTotalprice() {
         return this.totalprice;
     }
 
-//    public void calculateChangeMoney(double customermoney){
-//        this.changemoney = customermoney - this.totalprice;
-//    }
-//    public double getChangeMoney(){
-//        return this.changemoney;
-//    }
-//    public void getItemInCart() {
-//        for (int i = 0; i < count; i++) {
-//            //System.out.println(this.itemInCart[i]);
-//            this.itemInCart[i].listGameFromStore();
-//        }
-//        
-//    }
+
     public void calculateTotalPrice() {
         for (int i = 0; i < this.itemInCart.size(); i++) {
             this.totalprice += this.itemInCart.get(i).getPrice();
@@ -60,18 +25,8 @@ public class Cart implements CustomerService {
 
     }
 
-//    @Override
-//    public String toString() {
-//        return "Cart{" + "itemInCart=" + itemInCart + '}';
-//    }
-//    public boolean listGameFromCart() {
-//        for (Game game : itemInCart) {
-//            System.out.println(game);
-//        }
-//        return false;
-//    }
+
     public boolean listGameFromCart() {
-//        try{
         System.out.println("************************ Game in " + id + " *************************");
         if (itemInCart.isEmpty()) {
             System.out.println("nothing");
@@ -82,12 +37,8 @@ public class Cart implements CustomerService {
 
             System.out.print(game + "\t");
             System.out.println("Index is " + this.itemInCart.indexOf(game));
-            //System.out.println(this.itemInCart);
-            //return true;
         }
-//        }catch(NullPointerException ex){
-//            System.out.println("This cart have nothing");
-//        }
+
         return true;
         
     }
@@ -147,9 +98,5 @@ public class Cart implements CustomerService {
         return false;
 
     }
-//    public void clearCart(CustomerAccount ac){
-//        for (int i = 0; i < ac.getCart().itemInCart.size(); i++) {
-//            itemInCart.set(i, null);
-//        }
-//    }
+
 }
