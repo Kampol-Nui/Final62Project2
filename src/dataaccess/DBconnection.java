@@ -38,21 +38,21 @@ public class DBconnection {
         return conn;
     }
     
-    public static double SelectLastMoney(String password){
+    public static double SelectLastMoney(double id){
         double money=0;
         //double c1[] = new double[100];
         try(Connection con = DBconnection.getConnecting();
              Statement stm = con.createStatement();){
             ResultSet rs = null;
             //double d = rs.getDouble("MYMONEY");
-            String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE PASSWORD = '"+password+"'");
-            String query3 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2) AND PASSWORD = '"+password+"'");
-            String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+password+"'");
+            //String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE PASSWORD = '"+id+"'");
+            String query3 = ("SELECT * FROM CUSTOMERACCOUNT WHERE ID ="+id+" AND ORDER_NUMBER=(SELECT MAX(ORDER_NUMBER) FROM CUSTOMERACCOUNT)");
+            //String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+id+"'");
          rs = stm.executeQuery(query3);
          
          if (rs.next()) {
             //String ps = rs.getString("PASSWORD");
-             //System.out.println(ps);
+            //System.out.println(ps);
             //if(ps==password){
             money = rs.getDouble("MYMONEY");
             //String lname = rs.getString("LastName");

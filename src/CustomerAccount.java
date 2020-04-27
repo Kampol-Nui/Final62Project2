@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author MINI
  */
 public class CustomerAccount extends Account {
-    private long uniqueId;
+    private double uniqueId;
     private Cart cart;
     protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
@@ -125,22 +125,24 @@ public class CustomerAccount extends Account {
             System.out.println("Please in sert your money");
         
         } else {
-        this.myMoney = topupmoney+dataaccess.DBconnection.SelectLastMoney(getPassword());
-         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?)";
-        String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
+        this.myMoney = topupmoney+dataaccess.DBconnection.SelectLastMoney(getUniqueId());
+         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?,?)";
+        //String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
             try(Connection con = DBconnection.getConnecting();) {
             try (
                         PreparedStatement stm = con.prepareStatement(sql1);
-                        PreparedStatement stm2 = con.prepareStatement(sql2);) {
+                        //PreparedStatement stm2 = con.prepareStatement(sql2);
+                    ) {
                     //stm.setInt(1, 1);
-                    stm2.setDouble(2, this.myMoney);
-                    stm2.setString(1, this.getPassword());
-                    stm.setString(1, this.getUsername());
-                    stm.setDouble(4, this.myMoney);
-                    stm.setString(2, this.getPassword());
-                    stm.setDouble(3, this.cart.getTotalprice());
+//                    stm2.setDouble(2, this.myMoney);
+//                    stm2.setString(1, this.getPassword());
+                    stm.setDouble(1, this.getUniqueId());
+                    stm.setString(2, this.getUsername());
+                    stm.setDouble(5, this.myMoney);
+                    stm.setString(3, this.getPassword());
+                    stm.setDouble(4, this.cart.getTotalprice());
                     stm.executeUpdate();
-                    stm2.executeUpdate();
+                    //stm2.executeUpdate();
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }
@@ -179,4 +181,10 @@ public class CustomerAccount extends Account {
 //    public double calculateMyTotalMoney(){
 //        
 //    }
+
+    public double getUniqueId() {
+        return uniqueId;
+    }
+    
+    
 }
