@@ -126,7 +126,7 @@ public class CustomerAccount extends Account {
         
         } else {
         this.myMoney = topupmoney+dataaccess.DBconnection.SelectLastMoney(getUniqueId());
-         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?,?)";
+         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney,topupmoney)" + "VALUES(?,?,?,?,?,?)";
         //String sql2 = "INSERT INTO PASSWORD " + "(password,mymoney)" + "VALUES(?,?)";
             try(Connection con = DBconnection.getConnecting();) {
             try (
@@ -136,6 +136,7 @@ public class CustomerAccount extends Account {
                     //stm.setInt(1, 1);
 //                    stm2.setDouble(2, this.myMoney);
 //                    stm2.setString(1, this.getPassword());
+                    stm.setDouble(6, topupmoney);
                     stm.setDouble(1, this.getUniqueId());
                     stm.setString(2, this.getUsername());
                     stm.setDouble(5, this.myMoney);

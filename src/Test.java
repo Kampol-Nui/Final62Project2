@@ -78,14 +78,14 @@ public class Test {
 //        System.out.println("-----------------------------------------------------------------");
 //        System.out.println("                                                                   ");
         System.out.println(cus1.getMyMoney());
-        //cus1.TopupMoney(1000);
+        cus1.TopupMoney(1000);
         System.out.println(cus1.getMyMoney());
         c1.calculateTotalPrice();
         lb1.payGame(cus1);
         System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
         System.out.println(cus2.getMyMoney());
-        //cus2.TopupMoney(1000);
+        cus2.TopupMoney(1000);
         System.out.println(cus2.getMyMoney());
         c2.calculateTotalPrice();
         lb2.payGame(cus2);
