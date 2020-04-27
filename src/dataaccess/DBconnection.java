@@ -45,7 +45,7 @@ public class DBconnection {
              Statement stm = con.createStatement();){
             ResultSet rs = null;
             //double d = rs.getDouble("MYMONEY");
-            String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 C WHERE PASSWORD = '"+password+"'");
+            String query2 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE PASSWORD = '"+password+"'");
             String query3 = ("SELECT * FROM CUSTOMERACCOUNT2 WHERE ID=(SELECT MAX(ID) FROM CUSTOMERACCOUNT2) AND PASSWORD = '"+password+"'");
             String query = ("SELECT * FROM PASSWORD P ,CUSTOMERACCOUNT2 C WHERE P.PASSWORD = C.PASSWORD AND C.ID=(SELECT MAX(C.ID) FROM CUSTOMERACCOUNT2)"+"AND C.PASSWORD = '"+password+"'");
          rs = stm.executeQuery(query3);

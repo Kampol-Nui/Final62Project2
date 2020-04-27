@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author MINI
  */
 public class CustomerAccount extends Account {
-
+    private long uniqueId;
     private Cart cart;
     protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
@@ -26,6 +26,7 @@ public class CustomerAccount extends Account {
     public CustomerAccount(Cart myCart, String username, String password, AccountStatus status, Person person) {
         super(username, password, person);
         this.cart = myCart;
+        this.uniqueId = GetNextID.getNext();
 //        if(dataaccess.DBconnection.SelectLastMoney(password)!=0){
 //        this.myMoney = dataaccess.DBconnection.SelectLastMoney(password) ;
 //        }else{
