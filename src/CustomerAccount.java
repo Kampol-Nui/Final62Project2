@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,7 +49,7 @@ public class CustomerAccount extends Account {
         }
 
     }
-    
+
     public double getMyMoney() {
         return this.myMoney = dataaccess.DBconnection.SelectLastMoney(getUniqueId());
     }
@@ -63,11 +66,10 @@ public class CustomerAccount extends Account {
         } else {
             this.myMoney = topupmoney + dataaccess.DBconnection.SelectLastMoney(getUniqueId());
             String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney,topupmoney)" + "VALUES(?,?,?,?,?,?)";
-
+            
             try (Connection con = DBconnection.getConnecting();) {
                 try (
-                        PreparedStatement stm = con.prepareStatement(sql1); 
-                        ) {
+                        PreparedStatement stm = con.prepareStatement(sql1);) {
                     stm.setDouble(6, topupmoney);
                     stm.setDouble(1, this.getUniqueId());
                     stm.setString(2, this.getUsername());
@@ -88,8 +90,30 @@ public class CustomerAccount extends Account {
     public double getUniqueId() {
         return uniqueId;
     }
-    
-    public void listBuyingHistory(){
-        
+
+    public void listBuyingHistory() {
+        try (Connection con = DBconnection.getConnecting();
+                Statement stm = con.createStatement();) {
+            ResultSet rs = null;
+            String query = ("SELECT * FROM CUSTOMERACCOUNT WHERE ID =" + this.uniqueId);
+            rs = stm.executeQuery(query);
+            System.out.println("================================================================================================================");
+            System.out.println(String.format("%11s %s %10s %s %20s %s %20s %s %14s %s %8s %s %8s ", "ORDERNUMBER", "|", "ID", "|", "NAME", "|", "PASSWORD", "|", "CARTTOTALPRICE", "|", "MYMONEY", "|", "TOPUPMONEY"));
+            System.out.println("================================================================================================================");
+            while (rs.next()) {
+                int orderNumber = rs.getInt("ORDER_NUMBER");
+                long id = rs.getLong("ID");
+                String name = rs.getString("NAME");
+                String password = rs.getString("PASSWORD");
+                double cartTotalprice = rs.getDouble("CARTTOTALPRICE");
+                double mymoney = rs.getDouble("MYMONEY");
+                double topupMoney = rs.getDouble("TOPUPMONEY");
+                System.out.println(String.format("%11s %s %10s %s %20s %s %20s %s %14s %s %8s %s %8s ", orderNumber, "|", id, "|", name, "|", password, "|", cartTotalprice, "|", mymoney, "|", topupMoney));
+            }
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+        } catch (SQLException ex) {
+            System.out.println(ex);;
+        }
     }
 }

@@ -78,14 +78,14 @@ public class Test {
 //        System.out.println("-----------------------------------------------------------------");
 //        System.out.println("                                                                   ");
         
-        System.out.println(cus1.getMyMoney());
-        cus1.TopupMoney(1000);
-        System.out.println(cus1.getMyMoney());
+
+//        cus1.TopupMoney(1000);
+//        System.out.println(cus1.getMyMoney());
         lb1.payGame(cus1);
         System.out.println("-----------------------------------------------------------------");
-        System.out.println(cus2.getMyMoney());
-        cus2.TopupMoney(1000);
-        System.out.println(cus2.getMyMoney());
+
+//        cus2.TopupMoney(1000);
+//        System.out.println(cus2.getMyMoney());
         lb2.payGame(cus2);
         System.out.println("-----------------------------------------------------------------");
 
@@ -94,6 +94,7 @@ public class Test {
 //        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
         System.out.println(lb2.getMyGameLibrary(cus1));
+        cus2.listBuyingHistory();
         //System.out.println(lb1.getMyGameLibrary(cus2));
         // dataaccess.DBconnection.SelectLastMoney(cus1.getUniqueId());
 

@@ -15,6 +15,7 @@ public class GameLibrary {
 
             if (ac.getCart().getTotalprice() <= dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId())) {
                 ac.myGameLibrary = (ArrayList<Game>) ac.getCart().itemInCart.clone();
+                double oldmoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId());
                 ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId()) - ac.getCart().getTotalprice();
                 try (
                         PreparedStatement stm = con.prepareStatement(sql1);) {
@@ -32,8 +33,8 @@ public class GameLibrary {
                 String sql2 = "UPDATE CUSTOMERACCOUNT2 set mymoney=" + ac.myMoney + " WHERE id =" + ac.getUniqueId();
                 try (Statement stm = con.createStatement();) {
                     stm.executeUpdate(sql2);
-                    System.out.println("Paygame successfully ");
-                    System.out.println("เงินเหลือ : " + ac.myMoney);
+                    System.out.println("ชำระเงินเสร็จสมบูรณ์ โปรดตรวจสอบ Library ของคุณหลังชำระเงิน ");
+                    System.out.println("ยอดเงินหลังชำระ : " + ac.myMoney + "ยอดเงินก่อนชำระ : " + oldmoney);
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }
