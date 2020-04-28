@@ -50,7 +50,7 @@ public class GameLibrary {
         } catch (SQLException ex) {
             ex.getMessage();
         }
-
+ac.WriteCustomerData();
     }
 
     public ArrayList<Game> getMyGameLibrary(CustomerAccount ac) {

@@ -1,5 +1,10 @@
 
 import dataaccess.DBconnection;
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -47,7 +52,7 @@ public class CustomerAccount extends Account {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        WriteCustomerData();
     }
 
     public double getMyMoney() {
@@ -84,6 +89,7 @@ public class CustomerAccount extends Account {
             } catch (SQLException ex) {
                 ex.getMessage();
             }
+            WriteCustomerData();
         }
     }
 
@@ -116,4 +122,23 @@ public class CustomerAccount extends Account {
             System.out.println(ex);;
         }
     }
+    
+        public void WriteCustomerData(){
+     try (   FileOutputStream fos = new FileOutputStream("file"+"_"+this.getUsername()+".dat");
+             BufferedOutputStream bos = new BufferedOutputStream(fos);
+             DataOutputStream dout = new DataOutputStream(bos) ) 
+        { 
+            
+            dout.writeLong((long)getUniqueId()); 
+            dout.writeUTF(getUsername()); 
+            dout.writeUTF(getPassword()); 
+            dout.writeDouble(getMyMoney()); 
+        } catch (FileNotFoundException ex) {
+            ex.getMessage();
+        } catch (IOException ex) {
+            ex.getMessage();
+        } 
+        
+    }
+
 }

@@ -106,6 +106,7 @@ public class Test {
 //        c1.listGameFromCart();
         // cus1.addCustomerToServer(500,"Nui","1231231",c1);
         // System.out.println(lb1.getMyGameLibrary(null));
+        admin.readCustomer(admin, "file_asdas.dat");
     }
-
+        
 }
