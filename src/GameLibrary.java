@@ -3,6 +3,7 @@ import dataaccess.DBconnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GameLibrary {
@@ -25,7 +26,14 @@ public class GameLibrary {
                     stm.setDouble(4, ac.getCart().getTotalprice());
                     stm.executeUpdate();
 
-
+                } catch (SQLException ex) {
+                    ex.getMessage();
+                }
+                String sql2 = "UPDATE CUSTOMERACCOUNT2 set mymoney=" + ac.myMoney + " WHERE id =" + ac.getUniqueId();
+                try (Statement stm = con.createStatement();) {
+                    stm.executeUpdate(sql2);
+                    System.out.println("Paygame successfully ");
+                    System.out.println("เงินเหลือ : " + ac.myMoney);
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }

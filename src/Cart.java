@@ -7,6 +7,7 @@ public class Cart implements CustomerService {
     private String id;
     private double totalprice;
     protected ArrayList<Game> itemInCart;
+    
     public Cart(String id) {
         this.id = id;
         itemInCart = new ArrayList<>();
@@ -83,7 +84,6 @@ public class Cart implements CustomerService {
         try {
             for (int i = 0; i < this.itemInCart.size(); i++) {
                 if (this.itemInCart.get(i).getTitle().equals(title)) {
-                    // this.itemInCart.remove(GameStore.games.get(i));
                     this.itemInCart.remove(this.itemInCart.get(i));
                     System.out.println("Successfully Removed");
                     return true;

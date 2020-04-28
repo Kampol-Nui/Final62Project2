@@ -82,13 +82,11 @@ public class Test {
         cus1.TopupMoney(1000);
         System.out.println(cus1.getMyMoney());
         lb1.payGame(cus1);
-        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
         System.out.println(cus2.getMyMoney());
         cus2.TopupMoney(1000);
         System.out.println(cus2.getMyMoney());
         lb2.payGame(cus2);
-        System.out.println(cus2.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
 
         //lb2.payGame(cus2);

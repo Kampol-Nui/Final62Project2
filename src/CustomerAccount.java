@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class CustomerAccount extends Account {
 
-    private double uniqueId;
+    private long uniqueId;
     private Cart cart;
     protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
@@ -29,10 +29,24 @@ public class CustomerAccount extends Account {
         this.cart = myCart;
         this.uniqueId = GetNextID.getNext();
         this.myGameLibrary = new ArrayList<>();
+        String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(id,username,password,mymoney)" + "VALUES(?,?,?,?)";
+        try (Connection conn = DBconnection.getConnecting();) {
+            try (PreparedStatement pstm = conn.prepareStatement(sql1);) {
+                pstm.setLong(1, uniqueId);
+                pstm.setString(2, username);
+                pstm.setString(3, password);
+                pstm.setDouble(4, this.myMoney);
+                pstm.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
 
     }
-
-
+    
     public double getMyMoney() {
         return this.myMoney = dataaccess.DBconnection.SelectLastMoney(getUniqueId());
     }
