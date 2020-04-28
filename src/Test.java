@@ -24,8 +24,8 @@ public class Test {
         Game game2 = new Game("02", "RE7", 60);
         Game game3 = new Game("03", "RE8", 100);
         Game game4 = new Game("04", "RE9", 40);
-        GameLibrary lb1 = new GameLibrary();
-        GameLibrary lb2 = new GameLibrary();
+//        GameLibrary lb1 = new GameLibrary();
+//        GameLibrary lb2 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount("asdas", "asdasd", AccountStatus.ACTIVE, person2);
         CustomerAccount cus2 = new CustomerAccount("customer2", "testpass", AccountStatus.ACTIVE, person3);
         
@@ -62,22 +62,20 @@ public class Test {
         System.out.println("=============================TEST FOR ADMIN========================================================");
         System.out.println("                                                                                                   ");
         System.out.println("=============================TEST FOR CUSTOMER=====================================================");
-        cus1.getCart().addGameToCart(null, null, null);
-        cus1.getCart().listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
-        cus1.getCart().addGameToCart(gameStore, cus1, "RE8");
-        cus1.getCart().addGameToCart(gameStore, cus2, "RE7");
-        cus1.getCart().addGameToCart(gameStore, cus2, "RE8");
+        cus1.getMyCart().addGameToCart(gameStore, "RE8");
+        cus1.getMyCart().addGameToCart(gameStore, "RE7");
+        cus1.getMyCart().addGameToCart(gameStore, "RE8");
 //        c1.addGameToCart(gameStore, cus1, "RE8");
-        cus1.getCart().listGameFromCart();
+        cus1.getMyCart().listGameFromCart();
         
 
         System.out.println("-----------------------------------------------------------------");
-        cus2.getCart().addGameToCart(gameStore, cus1, "RE8");
-        cus2.getCart().addGameToCart(gameStore, cus2, "RE7");
-        cus2.getCart().addGameToCart(gameStore, cus2, "TOMB RIDER");
+        cus2.getMyCart().addGameToCart(gameStore, "RE8");
+        cus2.getMyCart().addGameToCart(gameStore,"RE7");
+        cus2.getMyCart().addGameToCart(gameStore, "TOMB RIDER");
 //        c1.addGameToCart(gameStore, cus1, "RE8");
-        cus2.getCart().listGameFromCart();
+        cus2.getMyCart().listGameFromCart();
         System.out.println("-----------------------------------------------------------------");
 //        c1.removeGameFromCart(null, "RE7");
 //        c1.listGameFromCart();
@@ -90,20 +88,22 @@ public class Test {
 
 //        cus1.TopupMoney(1000);
 //        System.out.println(cus1.getMyMoney());
-        lb1.payGame(cus1);
+        cus2.getMyLibrary().addGameFromCartToLibrary(cus1);
+        System.out.println("-----------------------------------------------------------------");
+        
+        cus1.getMyLibrary().addGameFromCartToLibrary(cus2);
         System.out.println("-----------------------------------------------------------------");
 
-//        cus2.TopupMoney(1000);
-//        System.out.println(cus2.getMyMoney());
-        lb2.payGame(cus2);
-        System.out.println("-----------------------------------------------------------------");
+
+//        lb2.payGame(cus2);
+//        System.out.println("-----------------------------------------------------------------");
 
         //lb2.payGame(cus2);
 //        System.out.println(c1.getTotalprice());
 //        System.out.println(cus1.getMyMoney());
         System.out.println("-----------------------------------------------------------------");
-        System.out.println(lb1.getMyGameLibrary(cus1));
-        System.out.println(lb1.getMyGameLibrary(cus1));
+        System.out.println(cus1.getMyLibrary().getMyGameLibrary());
+        System.out.println(cus2.getMyLibrary().getMyGameLibrary());
         cus2.listBuyingHistory();
         //System.out.println(lb1.getMyGameLibrary(cus2));
         // dataaccess.DBconnection.SelectLastMoney(cus1.getUniqueId());

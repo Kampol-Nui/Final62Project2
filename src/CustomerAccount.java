@@ -28,15 +28,16 @@ import java.util.logging.Logger;
 public class CustomerAccount extends Account {
 
     private double uniqueId;
-    private Cart cart;
+    private Cart myCart;
+    private GameLibrary myLibrary;
     protected double myMoney;
-    protected ArrayList<Game> myGameLibrary;
+    
 
     public CustomerAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, person);
-        this.cart = new Cart(GetNextID.getCartID());
+        this.myCart = new Cart();
+        this.myLibrary = new GameLibrary();
         this.uniqueId = GetNextID.getNext();
-        this.myGameLibrary = new ArrayList<>();
         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(id,username,password,mymoney)" + "VALUES(?,?,?,?)";
         try (Connection conn = DBconnection.getConnecting();) {
             try (PreparedStatement pstm = conn.prepareStatement(sql1);) {
@@ -59,8 +60,8 @@ public class CustomerAccount extends Account {
         return this.myMoney = dataaccess.DBconnection.SelectLastMoney(getUniqueId());
     }
 
-    public Cart getCart() {
-        return cart;
+    public Cart getMyCart() {
+        return this.myCart;
     }
 
     public void TopupMoney(double topupmoney) {
@@ -80,7 +81,7 @@ public class CustomerAccount extends Account {
                     stm.setString(2, this.getUsername());
                     stm.setDouble(5, this.myMoney);
                     stm.setString(3, this.getPassword());
-                    stm.setDouble(4, this.cart.getTotalprice());
+                    stm.setDouble(4, this.myCart.getTotalprice());
                     stm.executeUpdate();
 
                 } catch (SQLException ex) {
@@ -121,6 +122,10 @@ public class CustomerAccount extends Account {
         } catch (SQLException ex) {
             System.out.println(ex);;
         }
+    }
+
+    public GameLibrary getMyLibrary() {
+        return myLibrary;
     }
     
         

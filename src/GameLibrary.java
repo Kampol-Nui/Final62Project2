@@ -8,15 +8,21 @@ import java.util.ArrayList;
 
 public class GameLibrary {
 
-    public void payGame(CustomerAccount ac) {
+    private ArrayList<Game> myGameLibrary;
+    
+    public GameLibrary() {
+        this.myGameLibrary = new ArrayList<>();
+    }
+
+    public void addGameFromCartToLibrary(CustomerAccount ac) {
         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?,?)";
-        ac.getCart().calculateTotalPrice();
+        ac.getMyCart().calculateTotalPrice();
         try (Connection con = DBconnection.getConnecting();) {
 
-            if (ac.getCart().getTotalprice() <= dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId())) {
-                ac.myGameLibrary = (ArrayList<Game>) ac.getCart().itemInCart.clone();
+            if (ac.getMyCart().getTotalprice() <= dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId())) {
+                this.myGameLibrary = (ArrayList<Game>) ac.getMyCart().itemInCart.clone();
                 double oldmoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId());
-                ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId()) - ac.getCart().getTotalprice();
+                ac.myMoney = dataaccess.DBconnection.SelectLastMoney(ac.getUniqueId()) - ac.getMyCart().getTotalprice();
                 try (
                         PreparedStatement stm = con.prepareStatement(sql1);) {
 
@@ -24,7 +30,7 @@ public class GameLibrary {
                     stm.setString(2, ac.getUsername());
                     stm.setDouble(5, ac.myMoney);
                     stm.setString(3, ac.getPassword());
-                    stm.setDouble(4, ac.getCart().getTotalprice());
+                    stm.setDouble(4, ac.getMyCart().getTotalprice());
                     stm.executeUpdate();
 
                 } catch (SQLException ex) {
@@ -34,12 +40,12 @@ public class GameLibrary {
                 try (Statement stm = con.createStatement();) {
                     stm.executeUpdate(sql2);
                     System.out.println("ชำระเงินเสร็จสมบูรณ์ โปรดตรวจสอบ Library ของคุณหลังชำระเงิน ");
-                    System.out.println("ยอดเงินหลังชำระ : " + ac.myMoney + "ยอดเงินก่อนชำระ : " + oldmoney);
+                    System.out.println("ยอดเงินหลังชำระ : " + ac.myMoney + " ยอดเงินก่อนชำระ : " + oldmoney);
                 } catch (SQLException ex) {
                     ex.getMessage();
                 }
 
-                ac.getCart().itemInCart.clear();
+                ac.getMyCart().itemInCart.clear();
 
             } else {
 
@@ -53,10 +59,10 @@ public class GameLibrary {
         
     }
 
-    public ArrayList<Game> getMyGameLibrary(CustomerAccount ac) {
+    public ArrayList<Game> getMyGameLibrary() {
         try {
             System.out.println("************************ MY Library *************************");
-            return ac.myGameLibrary;
+            return this.myGameLibrary;
         } catch (NullPointerException ex) {
             System.out.println(ex.getMessage());
             return null;

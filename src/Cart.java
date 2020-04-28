@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class Cart implements CustomerService {
 
-    private long id;
     private double totalprice;
     protected ArrayList<Game> itemInCart;
     
-    public Cart(long id) {
-        this.id = id;
+    public Cart() {
         itemInCart = new ArrayList<>();
     }
 
@@ -45,12 +43,12 @@ public class Cart implements CustomerService {
     }
 
     public void removeallItemFromCart(CustomerAccount ac){
-        ac.getCart().itemInCart = null;
+        ac.getMyCart().itemInCart = null;
     }
 
 
     @Override
-    public boolean addGameToCart(GameStore gameStore, CustomerAccount ca, String title) {
+    public boolean addGameToCart(GameStore gameStore,String title) {
         try {
             for (int i = 0; i < gameStore.games.size(); i++) {
                 if (gameStore.games.get(i).getTitle().equals(title)) {
