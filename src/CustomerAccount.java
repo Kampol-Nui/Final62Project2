@@ -27,7 +27,7 @@ import java.util.logging.Logger;
  */
 public class CustomerAccount extends Account {
 
-    private long uniqueId;
+    private double uniqueId;
     private Cart cart;
     protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
@@ -40,7 +40,7 @@ public class CustomerAccount extends Account {
         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(id,username,password,mymoney)" + "VALUES(?,?,?,?)";
         try (Connection conn = DBconnection.getConnecting();) {
             try (PreparedStatement pstm = conn.prepareStatement(sql1);) {
-                pstm.setLong(1, uniqueId);
+                pstm.setDouble(1, uniqueId);
                 pstm.setString(2, username);
                 pstm.setString(3, password);
                 pstm.setDouble(4, this.myMoney);
@@ -52,7 +52,7 @@ public class CustomerAccount extends Account {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        WriteCustomerData();
+       // WriteCustomerData();
     }
 
     public double getMyMoney() {
@@ -89,7 +89,7 @@ public class CustomerAccount extends Account {
             } catch (SQLException ex) {
                 ex.getMessage();
             }
-            WriteCustomerData();
+            //WriteCustomerData();
         }
     }
 
@@ -123,22 +123,6 @@ public class CustomerAccount extends Account {
         }
     }
     
-        public void WriteCustomerData(){
-     try (   FileOutputStream fos = new FileOutputStream("file"+"_"+this.getUsername()+".dat");
-             BufferedOutputStream bos = new BufferedOutputStream(fos);
-             DataOutputStream dout = new DataOutputStream(bos) ) 
-        { 
-            
-            dout.writeLong((long)getUniqueId()); 
-            dout.writeUTF(getUsername()); 
-            dout.writeUTF(getPassword()); 
-            dout.writeDouble(getMyMoney()); 
-        } catch (FileNotFoundException ex) {
-            ex.getMessage();
-        } catch (IOException ex) {
-            ex.getMessage();
-        } 
         
-    }
 
 }

@@ -28,6 +28,7 @@ public class Test {
         GameLibrary lb2 = new GameLibrary();
         CustomerAccount cus1 = new CustomerAccount(c1, "asdas", "asdasd", AccountStatus.ACTIVE, person2);
         CustomerAccount cus2 = new CustomerAccount(c2, "customer2", "testpass", AccountStatus.ACTIVE, person3);
+        
 //        cus1.TopupMoney(800);
         //cus2.TopupMoney(1000);
         AdminAccount admin = new AdminAccount("NobodyFound", "007", person);
@@ -106,7 +107,10 @@ public class Test {
 //        c1.listGameFromCart();
         // cus1.addCustomerToServer(500,"Nui","1231231",c1);
         // System.out.println(lb1.getMyGameLibrary(null));
-        admin.readCustomer(admin, "file_asdas.dat");
+        CustomerAccount cusall[]= {cus1,cus2};
+        AllCustomer all = new AllCustomer(cusall);
+        admin.WriteCustomerData(admin,all);
+        admin.readCustomer(admin, "file_.dat");
     }
         
 }
