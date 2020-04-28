@@ -32,9 +32,9 @@ public class CustomerAccount extends Account {
     protected double myMoney;
     protected ArrayList<Game> myGameLibrary;
 
-    public CustomerAccount(Cart myCart, String username, String password, AccountStatus status, Person person) {
+    public CustomerAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, person);
-        this.cart = myCart;
+        this.cart = new Cart(GetNextID.getCartID());
         this.uniqueId = GetNextID.getNext();
         this.myGameLibrary = new ArrayList<>();
         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(id,username,password,mymoney)" + "VALUES(?,?,?,?)";

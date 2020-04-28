@@ -7,7 +7,7 @@ public class GetNextID {
     public static long getNext() {
         return numberGenerator.getAndIncrement();
     }
-    public static long getNextcount() {
+    public static long getCartID() {
         return numberGenerator2.getAndIncrement();
     }
 

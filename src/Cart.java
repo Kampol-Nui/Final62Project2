@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Cart implements CustomerService {
 
-    private String id;
+    private long id;
     private double totalprice;
     protected ArrayList<Game> itemInCart;
     
-    public Cart(String id) {
+    public Cart(long id) {
         this.id = id;
         itemInCart = new ArrayList<>();
     }
@@ -28,7 +28,7 @@ public class Cart implements CustomerService {
 
 
     public boolean listGameFromCart() {
-        System.out.println("************************ Game in " + id + " *************************");
+        System.out.println("************************ Game in MyCart *************************");
         if (itemInCart.isEmpty()) {
             System.out.println("nothing");
             
@@ -47,10 +47,7 @@ public class Cart implements CustomerService {
     public void removeallItemFromCart(CustomerAccount ac){
         ac.getCart().itemInCart = null;
     }
-    @Override
-    public String toString() {
-        return " " + id;
-    }
+
 
     @Override
     public boolean addGameToCart(GameStore gameStore, CustomerAccount ca, String title) {
