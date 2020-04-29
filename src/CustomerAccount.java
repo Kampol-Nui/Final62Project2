@@ -109,7 +109,7 @@ public class CustomerAccount extends Account {
             System.out.println("================================================================================================================");
             while (rs.next()) {
                 int orderNumber = rs.getInt("ORDER_NUMBER");
-                long id = rs.getLong("ID");
+                double id = rs.getDouble("ID");
                 String name = rs.getString("NAME");
                 String password = rs.getString("PASSWORD");
                 double cartTotalprice = rs.getDouble("CARTTOTALPRICE");
