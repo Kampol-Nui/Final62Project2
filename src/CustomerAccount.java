@@ -36,7 +36,7 @@ public class CustomerAccount extends Account {
     public CustomerAccount(String username, String password, AccountStatus status, Person person) {
         super(username, password, person);
         this.myCart = new Cart();
-        this.myLibrary = new GameLibrary();
+        this.myLibrary = new GameLibrary(this);
         this.uniqueId = GetNextID.getNext();
         String sql1 = "INSERT INTO CUSTOMERACCOUNT2 " + "(id,username,password,mymoney)" + "VALUES(?,?,?,?)";
         try (Connection conn = DBconnection.getConnecting();) {

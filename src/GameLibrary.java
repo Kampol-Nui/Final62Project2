@@ -9,12 +9,14 @@ import java.util.ArrayList;
 public class GameLibrary {
 
     private ArrayList<Game> myGameLibrary;
+    private CustomerAccount ac;
     
-    public GameLibrary() {
+    public GameLibrary(CustomerAccount ac) {
+        this.ac = ac;
         this.myGameLibrary = new ArrayList<>();
     }
 
-    public void addGameFromCartToLibrary(CustomerAccount ac) {
+    public void addGameFromCartToLibrary() {
         String sql1 = "INSERT INTO CUSTOMERACCOUNT " + "(id,name,password,carttotalprice,mymoney)" + "VALUES(?,?,?,?,?)";
         ac.getMyCart().calculateTotalPrice();
         try (Connection con = DBconnection.getConnecting();) {

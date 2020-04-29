@@ -88,10 +88,10 @@ public class Test {
 
 //        cus1.TopupMoney(1000);
 //        System.out.println(cus1.getMyMoney());
-        cus2.getMyLibrary().addGameFromCartToLibrary(cus1);
+        cus2.getMyLibrary().addGameFromCartToLibrary();
         System.out.println("-----------------------------------------------------------------");
         
-        cus1.getMyLibrary().addGameFromCartToLibrary(cus2);
+        cus1.getMyLibrary().addGameFromCartToLibrary();
         System.out.println("-----------------------------------------------------------------");
 
 
